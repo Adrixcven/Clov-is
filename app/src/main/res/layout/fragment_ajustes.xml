@@ -1,0 +1,53 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgrey"
+    android:padding="@dimen/default_margin"
+    tools:context=".Fragment.ajustes">
+
+
+    <TextView
+        android:id="@+id/txt_mascotas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idioma"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_idiomas"
+        android:layout_width="246dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="14dp"
+        android:contentDescription="@string/idiomas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_mascotas" />
+
+    <Switch
+        android:id="@+id/switch_notificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:minHeight="48dp"
+        android:text="@string/recibir_notificaciones"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_idiomas" />
+
+    <Switch
+        android:id="@+id/switch_night_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:minHeight="48dp"
+        android:text="@string/modo_noche"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_notificaciones" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
