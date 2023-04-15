@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:541220693459:android:3a33ad51896572c61abb26",
+        "mobilesdk_app_id": "1:541220693459:android:b4a4857bcdb39ef01abb26",
         "android_client_info": {
-          "package_name": "copernic.cat.clovis"
+          "package_name": "cat.copernic.clovis"
         }
       },
       "oauth_client": [

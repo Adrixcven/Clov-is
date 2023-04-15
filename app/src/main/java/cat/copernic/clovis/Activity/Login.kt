@@ -8,18 +8,24 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (supportActionBar != null)
             supportActionBar!!.hide()
-        setContentView(R.layout.activity_login)
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        auth= Firebase.auth
 
         //CLICK EN INICIAR SESIÓN
         binding.btnLogin.setOnClickListener {
@@ -29,8 +35,7 @@ class Login : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
 
             if (correo.isNotBlank() && contrasena.isNotEmpty()) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity((intent))
+                loguinar(correo, contrasena)
             } else if (correo.isBlank() && contrasena.isNotEmpty()) {
                 builder.setTitle("Error")
                 builder.setMessage("El correo no puede estar vacío")
@@ -50,16 +55,33 @@ class Login : AppCompatActivity() {
                 val dialog = builder.create()
                 dialog.show()
             }
-            //CLICK EN REGISTRATE
-            binding.txtUnete.setOnClickListener {
-                startActivity(Intent(this, Register::class.java))
+
+        }
+        //CLICK EN REGISTRATE
+        binding.txtUnete.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
+            finish()
+        }
+        //CLICK EN OLVIDAR CONTRASEÑA
+        binding.txtForgotPassword.setOnClickListener {
+            Log.d("ForgetPassword", "Ir a Restablecer Contraseña")
+            val intent = Intent(this, RecoverPassword::class.java)
+            startActivity((intent))
+        }
+    }
+    fun loguinar(correo:String, contrasena:String){
+        val builder = AlertDialog.Builder(this)
+
+        auth.signInWithEmailAndPassword(correo,contrasena).addOnCompleteListener(this){task ->
+            if(task.isSuccessful){
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            }
-            //CLICK EN OLVIDAR CONTRASEÑA
-            binding.txtForgotPassword.setOnClickListener {
-                Log.d("ForgetPassword", "Ir a Restablecer Contraseña")
-                val intent = Intent(this, RecoverPassword::class.java)
-                startActivity((intent))
+            }else{
+                builder.setTitle("Error")
+                builder.setMessage("Ha ocurrido un fallo en el inicio de sesión")
+                builder.setPositiveButton("Aceptar", null)
+                val dialog = builder.create()
+                dialog.show()
             }
         }
     }

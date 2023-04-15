@@ -9,27 +9,27 @@
     android:padding="@dimen/default_margin">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="158dp"
-        android:layout_height="130dp"
+        android:id="@+id/Logo"
+        android:layout_width="@dimen/logo_width_small"
+        android:layout_height="@dimen/logo_height_small"
         android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/logoClovis" />
+        app:srcCompat="@drawable/logo_clovis" />
 
     <TextView
         android:id="@+id/txt_bienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="98dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="99dp"
         android:text="@string/bienvenido_usuario"
         android:textSize="@dimen/size_title2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <TextView
         android:id="@+id/txt_email"
@@ -93,7 +93,7 @@
 
     <TextView
         android:id="@+id/txt_forgotPassword"
-        style="@style/TextView16dp"
+        style="@style/TextView18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -132,9 +132,9 @@
         android:id="@+id/txt_unete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="178dp"
-        android:layout_marginEnd="176dp"
+        android:gravity="center|center_horizontal"
         android:text="@string/unete"
+        android:textAlignment="center"
         android:textSize="@dimen/size_title4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

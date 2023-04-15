@@ -12,7 +12,7 @@
     <dimen name="TxtInput_height">55dp</dimen>
     <!--Boton-->
     <dimen name="buttons_corners">12dp</dimen>
-    <dimen name="boton_width">169dp</dimen>
+    <dimen name="boton_width">150dp</dimen>
     <dimen name="boton_width_cancEnvi">162dp</dimen>
     <dimen name="boton_height">62dp</dimen>
     <!--Margen-->
@@ -42,5 +42,8 @@
     <dimen name="Check_size">200dp</dimen>
     <dimen name="Check_width">350dp</dimen>
     <dimen name="Check_height">50dp</dimen>
-
+    <!--Iconos-->
+    <dimen name="Icon_width">63dp</dimen>
+    <dimen name="Icon_heigth">55dp</dimen>
+    <dimen name="small_eye">32dp</dimen>
 </resources>

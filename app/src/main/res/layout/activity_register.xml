@@ -18,17 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="25dp">
-
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="197dp"
-                android:layout_height="184dp"
-                android:layout_marginTop="29dp"
-                android:contentDescription="@string/logo"
+                android:layout_width="@dimen/logo_width_grande"
+                android:layout_height="@dimen/logo_height_grande"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/logoClovis" />
+                app:srcCompat="@drawable/logo_clovis" />
 
             <TextView
                 android:id="@+id/txt_register"
@@ -123,12 +122,15 @@
                 android:layout_marginEnd="31dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_passwordregister">
+                app:layout_constraintTop_toBottomOf="@id/txt_passwordregister"
+                app:endIconMode="password_toggle"
+                app:endIconDrawable="@drawable/password_toogle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:hint="@string/contra"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
@@ -154,12 +156,15 @@
                 android:layout_marginEnd="31dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_reppass">
+                app:layout_constraintTop_toBottomOf="@id/txt_reppass"
+                app:endIconMode="password_toggle"
+                app:endIconDrawable="@drawable/password_toogle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaEepPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:hint="@string/contra"
                     tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
@@ -199,6 +204,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_crearCuenta"
                 tools:ignore="TextContrastCheck" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
