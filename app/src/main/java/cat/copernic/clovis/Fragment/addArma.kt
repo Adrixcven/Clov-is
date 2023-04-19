@@ -54,11 +54,17 @@ class addArma : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val getContentobject = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            binding.imgObject.setImageURI(uri)
+        }
         binding.imgObject.setOnClickListener {
-            hacerfotoObject.launch(Intent(CATEGORY_APP_GALLERY))
+            getContentobject.launch("image/*")
+        }
+        val getContentperk = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            binding.imgPerks.setImageURI(uri)
         }
         binding.imgPerks.setOnClickListener {
-            hacerfotoperk.launch(Intent(CATEGORY_APP_GALLERY))
+            getContentperk.launch("image/*")
         }
         binding.flechaAtras.setOnClickListener{
             view.findNavController().navigate(R.id.action_addArma_to_seleccionarArma)
