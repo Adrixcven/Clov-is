@@ -67,4 +67,9 @@
     <string name="crear_cuenta">Crear Cuenta</string>
     <string name="delete">delete</string>
     <string name="clase">Clase</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="inicio">Inicio</string>
+    <string name="a_adir_arma">Añadir Arma</string>
+    <string name="administrar_armas">Administrar Armas</string>
 </resources>

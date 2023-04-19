@@ -33,6 +33,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?attr/homeAsUpIndicator" />
+            <TextView
+                android:id="@+id/img_de_arma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/imagen_arma"
+                android:textSize="@dimen/size_title2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flecha_atras" />
 
             <ImageView
                 android:id="@+id/img_object"
@@ -44,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/img_de_arma"
                 app:srcCompat="@drawable/placeholder"
                 tools:ignore="ImageContrastCheck" />
 
@@ -131,9 +141,7 @@
                 android:id="@+id/txt_cargador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="164dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="164dp"
                 android:text="@string/cargador"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -489,9 +497,7 @@
                 android:id="@+id/info_obj_perk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="176dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginEnd="177dp"
                 android:text="@string/perks"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -502,9 +508,7 @@
                 android:id="@+id/info_where"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="176dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="177dp"
                 android:text="@string/lugar_de_obtenci_n"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -534,7 +538,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/Guardar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"
@@ -545,16 +549,7 @@
                 app:layout_constraintStart_toStartOf="@+id/editar_obtencion_arma"
                 app:layout_constraintTop_toBottomOf="@+id/editar_obtencion_arma" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/imagen_arma"
-                android:textSize="@dimen/size_title2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flecha_atras" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
