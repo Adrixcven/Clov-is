@@ -69,6 +69,15 @@ class Login : AppCompatActivity() {
             startActivity((intent))
         }
     }
+    override fun onStart() {
+        super.onStart()
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            var intent = Intent(this@Login, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
     fun loguinar(correo:String, contrasena:String){
         val builder = AlertDialog.Builder(this)
 
