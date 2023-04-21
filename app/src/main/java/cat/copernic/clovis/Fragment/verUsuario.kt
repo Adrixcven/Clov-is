@@ -46,7 +46,9 @@ class verUsuario : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnEditar.setOnClickListener{
-            view.findNavController().navigate(R.id.action_verUsuario_to_editar_usuario)
+            val id = binding.cabUserName.text.toString()
+            val directions = verUsuarioDirections.actionVerUsuarioToEditarUsuario(id)
+            view.findNavController().navigate(directions)
         }
     }
 

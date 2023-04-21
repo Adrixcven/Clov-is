@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRutas"
+    android:layout_width="@dimen/item_arma_width"
+    android:layout_height="@dimen/item_arma_height"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="25dp"
+    android:layout_marginEnd="32dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey">
+
+        <ImageView
+            android:id="@+id/img_weapon"
+            android:layout_width="150dp"
+            android:layout_height="138dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="2dp"
+            android:contentDescription="@string/imagen_arma"
+            android:src="@drawable/ejemplo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ejemplo" />
+
+        <TextView
+            android:id="@+id/name_weapon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="44dp"
+            android:text="@string/ejemplo_arma"
+            android:textSize="@dimen/size_title3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_weapon" />
+
+        <TextView
+            android:id="@+id/serv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="@+id/name_weapon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_weapon"
+            tools:text="prueba" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

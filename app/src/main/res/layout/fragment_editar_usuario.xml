@@ -23,26 +23,15 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/default_margin">
 
-            <ImageButton
-                android:id="@+id/flecha_atras"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imagen_atras"
-                android:minHeight="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="?attr/homeAsUpIndicator" />
-
             <TextView
                 android:id="@+id/cuenta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:text="@string/cuenta"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flecha_atras" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/fotoperfil"

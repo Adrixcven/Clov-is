@@ -58,7 +58,7 @@ class RecoverPassword : AppCompatActivity() {
 
             if(task.isSuccessful()){
                 builder.setTitle("Perfecto!")
-                builder.setMessage("Se ha enviado el Email con éxito, dirígete a tu Email.")
+                builder.setMessage("Se ha enviado el Email con éxito.")
                 builder.setPositiveButton("Aceptar"){ dialog, which ->
                     val intent = Intent(this, Login::class.java)
                     startActivity(intent)

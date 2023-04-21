@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.clovis.R
+import cat.copernic.clovis.adapter.adminAdapter
+import cat.copernic.clovis.adapter.armasAdapter
 import cat.copernic.clovis.databinding.FragmentAdministradorArmasBinding
+import cat.copernic.clovis.datalist.AdminList
+import cat.copernic.clovis.datalist.ArmasList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,10 +48,12 @@ class AdministradorArmas : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+    }
+    private fun initRecyclerView(){
+        binding.recyclerRuta.layoutManager = LinearLayoutManager(context)
+        binding.recyclerRuta.adapter = adminAdapter(AdminList.admin)
 
-        binding.imgEdit.setOnClickListener{
-            view.findNavController().navigate(R.id.action_administradorArmas_to_editarArma)
-        }
     }
 
     companion object {

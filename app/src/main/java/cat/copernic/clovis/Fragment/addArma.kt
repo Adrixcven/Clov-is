@@ -66,9 +66,6 @@ class addArma : Fragment() {
         binding.imgPerks.setOnClickListener {
             getContentperk.launch("image/*")
         }
-        binding.flechaAtras.setOnClickListener{
-            view.findNavController().navigate(R.id.action_addArma_to_seleccionarArma)
-        }
         binding.Guardar.setOnClickListener {
             view.findNavController().navigate(R.id.action_addArma_to_seleccionarArma)
         }

@@ -1,9 +1,10 @@
 plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.android.application'
-
+    id("androidx.navigation.safeargs.kotlin")
     // Add the Google services Gradle plugin
     id 'com.google.gms.google-services'
+
 }
 
 
@@ -70,6 +71,7 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    apply plugin: "androidx.navigation.safeargs.kotlin"
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 }

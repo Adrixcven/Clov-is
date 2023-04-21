@@ -18,12 +18,15 @@
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_ajustes.xml" value="0.25" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_editar_arma.xml" value="0.25" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_editar_usuario.xml" value="0.2" />
-        <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_editar_weapon.xml" value="0.264" />
+        <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_editar_weapon.xml" value="0.136" />
+        <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_favoritos.xml" value="0.25" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_info_object.xml" value="0.2359375" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_info_objects.xml" value="0.264" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_seleccionar_arma.xml" value="0.264" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_usuario.xml" value="0.25" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/fragment_ver_usuario.xml" value="0.25" />
+        <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/item_seleccionar_admin.xml" value="0.25" />
+        <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/layout/item_seleccionar_arma.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/menu/main_menu.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/menu/main_menu_admin.xml" value="0.25" />
         <entry key="..\:/Users/Adrix/AndroidStudioProjects/Clovis/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.11" />

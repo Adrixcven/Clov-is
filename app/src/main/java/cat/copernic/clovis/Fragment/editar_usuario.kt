@@ -11,11 +11,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import cat.copernic.clovis.R
 import cat.copernic.clovis.databinding.FragmentAdministradorArmasBinding
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
 import cat.copernic.clovis.databinding.FragmentEditarWeaponBinding
+import androidx.navigation.fragment.navArgs
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +35,7 @@ class editar_usuario : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentEditarUsuarioBinding
+    val args: editar_usuarioArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +55,11 @@ class editar_usuario : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var nom = args.id
+        binding.nom.setText(nom)
 
         binding.fotoperfil.setOnClickListener{
             intentfotoperfil.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
-        }
-        binding.flechaAtras.setOnClickListener{
-            view.findNavController().navigate(R.id.action_editar_usuario_to_verUsuario)
         }
         binding.guardarPerfil.setOnClickListener {
             view.findNavController().navigate(R.id.action_editar_usuario_to_verUsuario)

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         //menú lateral
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.seleccionarArma, R.id.verUsuario, R.id.ajustes, R.id.administradorArmas),
+            setOf(R.id.seleccionarArma, R.id.verUsuario, R.id.ajustes, R.id.administradorArmas, R.id.addArma, R.id.favoritos),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.Inicio ->  navController.navigate(R.id.seleccionarArma)
                 R.id.Cuenta -> navController.navigate(R.id.verUsuario)
+                R.id.Favoritos -> navController.navigate(R.id.favoritos)
                 R.id.Ajustes -> navController.navigate(R.id.ajustes)
                 R.id.Añadir_Arma -> navController.navigate(R.id.addArma)
                 R.id.administrararmas -> navController.navigate(R.id.administradorArmas)

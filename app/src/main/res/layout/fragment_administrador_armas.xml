@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/default_margin"
         android:text="@string/selecciona_un_arma"
         android:textSize="@dimen/size_title2"
@@ -22,74 +21,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-
-        android:layout_width="249dp"
-        android:layout_height="295dp"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="126dp"
-        app:cardCornerRadius="@dimen/buttons_corners"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRuta"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlt_selectWeapon">
+        app:layout_constraintTop_toBottomOf="@+id/tlt_selectWeapon" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey"
-            app:cardCornerRadius="@dimen/buttons_corners">
-
-
-            <ImageView
-                android:id="@+id/img_weapon"
-                android:layout_width="213dp"
-                android:layout_height="181dp"
-                android:layout_marginTop="5dp"
-                android:contentDescription="@string/imagen_arma"
-                android:src="@drawable/ejemplo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.503"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ejemplo" />
-
-            <TextView
-                android:id="@+id/name_weapon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="49dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="44dp"
-                android:text="@string/ejemplo_arma"
-                android:textSize="@dimen/size_title3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_weapon" />
-
-            <ImageView
-                android:id="@+id/img_edit"
-                android:layout_width="66dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="13dp"
-                android:contentDescription="@string/editar"
-                android:src="@drawable/edit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_weapon" />
-
-            <ImageView
-                android:id="@+id/img_trash"
-                android:layout_width="68dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/delete"
-                android:src="@drawable/trash"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/name_weapon" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

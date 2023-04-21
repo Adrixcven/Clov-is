@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.clovis.R
-import cat.copernic.clovis.databinding.FragmentInfoObjectsBinding
+import cat.copernic.clovis.adapter.armasAdapter
+import cat.copernic.clovis.adapter.favAdapter
+import cat.copernic.clovis.databinding.FragmentFavoritosBinding
 import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
-import cat.copernic.clovis.databinding.FragmentVerUsuarioBinding
+import cat.copernic.clovis.datalist.ArmasList
+import cat.copernic.clovis.datalist.FavList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,15 +21,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Info_objects.newInstance] factory method to
+ * Use the [Favoritos.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Info_objects : Fragment() {
+class Favoritos : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding: FragmentInfoObjectsBinding
-    val args: Info_objectsArgs by navArgs()
+    private lateinit var binding: FragmentFavoritosBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,15 +43,17 @@ class Info_objects : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentInfoObjectsBinding.inflate(inflater, container, false)
+        binding = FragmentFavoritosBinding.inflate(inflater, container, false)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var nom = args.id
-        binding.txtNameObj.text = nom
+        initRecyclerView()
     }
-
+    private fun initRecyclerView(){
+        binding.recyclerRuta.layoutManager = LinearLayoutManager(context)
+        binding.recyclerRuta.adapter = favAdapter(FavList.favoritos)
+    }
 
     companion object {
         /**
@@ -59,12 +62,12 @@ class Info_objects : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Info_objects.
+         * @return A new instance of fragment Favoritos.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Info_objects().apply {
+            Favoritos().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

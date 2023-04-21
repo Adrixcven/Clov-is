@@ -72,4 +72,9 @@
     <string name="inicio">Inicio</string>
     <string name="a_adir_arma">Añadir Arma</string>
     <string name="administrar_armas">Administrar Armas</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="edit_user">Editar Usuario</string>
+    <string name="edit_arma">Editar Arma</string>
+    <string name="info_arma">Información Arma</string>
+    <string name="select_arma">Seleccionar Arma</string>
 </resources>

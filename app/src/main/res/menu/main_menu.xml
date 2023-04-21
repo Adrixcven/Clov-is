@@ -17,6 +17,10 @@
             android:id="@+id/Cuenta"
             android:icon="@drawable/perfil"
             android:title="@string/cuenta" />
+        <item
+            android:id="@+id/Favoritos"
+            android:icon="@drawable/fav"
+            android:title="@string/favoritos" />
 
         <item
             android:id="@+id/Ajustes"

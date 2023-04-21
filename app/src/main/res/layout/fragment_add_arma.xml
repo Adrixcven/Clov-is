@@ -24,25 +24,15 @@
             android:layout_height="wrap_content"
             android:padding="25dp">
 
-            <ImageButton
-                android:id="@+id/flecha_atras"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/imagen_atras"
-                android:minHeight="48dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="?attr/homeAsUpIndicator" />
             <TextView
                 android:id="@+id/img_de_arma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:text="@string/imagen_arma"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flecha_atras" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/img_object"
@@ -86,9 +76,7 @@
                 android:id="@+id/editar_name_arma"
                 android:layout_width="@dimen/TxtInput_width"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nameObj">
@@ -97,7 +85,7 @@
                     android:id="@+id/editar_nombre_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -163,7 +151,7 @@
                     android:id="@+id/editar_ammo_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -195,7 +183,7 @@
                     android:id="@+id/editar_disparos_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -228,7 +216,7 @@
                     android:id="@+id/editar_impact_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -260,7 +248,7 @@
                     android:id="@+id/editar_distancia_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -292,7 +280,7 @@
                     android:id="@+id/editar_stability_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -324,7 +312,7 @@
                     android:id="@+id/editar_reload_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -356,7 +344,7 @@
                     android:id="@+id/editar_aimassist_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -388,7 +376,7 @@
                     android:id="@+id/editar_magazine_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -421,7 +409,7 @@
                     android:id="@+id/editar_zoomm_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -455,7 +443,7 @@
                     android:id="@+id/editar_airassist_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -487,7 +475,7 @@
                     android:id="@+id/editar_retroceso_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -530,7 +518,7 @@
                     android:id="@+id/editar_find_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />

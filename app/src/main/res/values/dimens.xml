@@ -46,4 +46,10 @@
     <dimen name="Icon_width">63dp</dimen>
     <dimen name="Icon_heigth">55dp</dimen>
     <dimen name="small_eye">32dp</dimen>
+
+    <!--arma dimension-->
+    <dimen name="item_arma_height">201dp</dimen>
+    <dimen name="item_arma_width">175dp</dimen>
+    <dimen name="item_admin_width">249dp</dimen>
+    <dimen name="item_admin_height">295dp</dimen>
 </resources>

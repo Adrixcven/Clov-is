@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.SeleccionarArma"
+    tools:context=".Fragment.Favoritos"
     android:background="@color/lightgrey"
     android:padding="@dimen/default_margin">
 
 
     <TextView
         android:id="@+id/tlt_selectWeapon"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
-        android:text="@string/selecciona_un_arma"
+        android:gravity="center_horizontal"
+        android:text="@string/favoritos"
         android:textSize="@dimen/size_title2"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +34,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlt_selectWeapon" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="45dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="25dp"
+        android:src="@drawable/fav"
+        app:layout_constraintStart_toEndOf="@+id/tlt_selectWeapon"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
