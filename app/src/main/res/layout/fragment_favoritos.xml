@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerRuta"
+        android:id="@+id/recyclerFavoritos"
         android:layout_width="wrap_content"
         android:layout_height="600dp"
         android:layout_gravity="center"
@@ -36,10 +36,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tlt_selectWeapon" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/Imagenfav"
         android:layout_width="45dp"
         android:layout_height="38dp"
         android:layout_marginStart="25dp"
+        android:contentDescription="@string/imagen_favoritos"
         android:src="@drawable/fav"
         app:layout_constraintStart_toEndOf="@+id/tlt_selectWeapon"
         app:layout_constraintTop_toTopOf="parent" />

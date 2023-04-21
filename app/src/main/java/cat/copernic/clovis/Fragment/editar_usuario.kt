@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.adapters.TextViewBindingAdapter.setText
@@ -19,6 +22,12 @@ import cat.copernic.clovis.databinding.FragmentAdministradorArmasBinding
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
 import cat.copernic.clovis.databinding.FragmentEditarWeaponBinding
 import androidx.navigation.fragment.navArgs
+import cat.copernic.clovis.Models.Usuario
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +45,8 @@ class editar_usuario : Fragment() {
     private var param2: String? = null
     private lateinit var binding: FragmentEditarUsuarioBinding
     val args: editar_usuarioArgs by navArgs()
+    private lateinit var classSpinner: Spinner
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +67,34 @@ class editar_usuario : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var nom = args.id
+        var selectedOption = ""
+        classSpinner = binding.spinnerClases
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.class_options,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            classSpinner.adapter = adapter
+        }
+        binding.spinnerClases.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                val item = parent.getItemAtPosition(position)
+                selectedOption = item.toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Este método se llama cuando no se ha seleccionado ninguna opción
+            }
+        })
+
         binding.nom.setText(nom)
 
         binding.fotoperfil.setOnClickListener{
@@ -65,13 +104,27 @@ class editar_usuario : Fragment() {
             view.findNavController().navigate(R.id.action_editar_usuario_to_verUsuario)
         }
     }
+    private var storage = FirebaseStorage.getInstance()
+    private var storageRef = storage.getReference().child("image/rutas").child(".jpeg")
     private val intentfotoperfil = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
+            auth = Firebase.auth
+            var actual = auth.currentUser
+            val email = actual!!.email.toString()
+            storageRef = storage.getReference().child("image/usuarios").child("$email.jpeg")
             val intent = result.data
             val imageBitmap = intent?.extras?.get("data") as Bitmap
+            val baos = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
+            var uploadTask = storageRef.putBytes(data)
+            uploadTask.addOnFailureListener {
+            }.addOnSuccessListener { taskSnapshot ->
+            }
             binding.fotoperfil.setImageBitmap(imageBitmap)
         }
     }
+
 
     companion object {
         /**

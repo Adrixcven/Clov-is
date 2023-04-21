@@ -53,8 +53,8 @@ class SeleccionarArma : Fragment() {
     }
 
     private fun initRecyclerView(){
-        binding.recyclerRuta.layoutManager = LinearLayoutManager(context)
-        binding.recyclerRuta.adapter = armasAdapter(ArmasList.armas)
+        binding.recyclerArmas.layoutManager = LinearLayoutManager(context)
+        binding.recyclerArmas.adapter = armasAdapter(ArmasList.armas)
     }
 
 

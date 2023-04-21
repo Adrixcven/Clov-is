@@ -77,4 +77,11 @@
     <string name="edit_arma">Editar Arma</string>
     <string name="info_arma">Información Arma</string>
     <string name="select_arma">Seleccionar Arma</string>
+    <string name="imagen_favoritos">Imagen Favoritos</string>
+    <string-array name="class_options">
+        <item>Selecciona Clase</item>
+        <item>Cazador</item>
+        <item>Titan</item>
+        <item>Hechicero</item>
+    </string-array>
 </resources>

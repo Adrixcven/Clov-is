@@ -83,14 +83,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_Nombre" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtInput_Apellidos"
+                android:id="@+id/txtInput_Id"
                 android:layout_width="@dimen/TxtInput_width"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/apellidos">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/apellid"
+                    android:id="@+id/id"
                     android:layout_width="@dimen/TxtInput_width"
                     android:layout_height="wrap_content"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -106,7 +106,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInput_Apellidos" />
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_Id" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInput_Correo"
@@ -123,46 +123,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/contraseña"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTop_texts"
-                android:text="@string/contrase_a"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_title2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInput_Correo" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txtInput_contraseña"
-                android:layout_width="@dimen/TxtInput_width"
-                android:layout_height="63dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contraseña"
-                app:endIconMode="password_toggle">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Contraseña"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textColorHint="#000000"
-                    tools:ignore="SpeakableTextPresentCheck" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <TextView
                 android:id="@+id/Clase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTop_texts"
+                android:layout_marginTop="20dp"
                 android:text="@string/que_clase_eres"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInput_contraseña"
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_Correo"
                 tools:ignore="TextContrastCheck" />
 
 
@@ -172,6 +143,7 @@
                 android:layout_height="@dimen/TxtInput_height"
                 android:layout_marginTop="18dp"
                 android:layout_weight="1"
+                android:entries="@array/class_options"
                 android:contentDescription="@string/clases_de_personaje"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Clase" />

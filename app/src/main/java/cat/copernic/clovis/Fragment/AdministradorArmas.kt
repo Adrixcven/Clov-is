@@ -51,8 +51,8 @@ class AdministradorArmas : Fragment() {
         initRecyclerView()
     }
     private fun initRecyclerView(){
-        binding.recyclerRuta.layoutManager = LinearLayoutManager(context)
-        binding.recyclerRuta.adapter = adminAdapter(AdminList.admin)
+        binding.recyclerAdmin.layoutManager = LinearLayoutManager(context)
+        binding.recyclerAdmin.adapter = adminAdapter(AdminList.admin)
 
     }
 

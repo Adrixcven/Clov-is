@@ -51,8 +51,8 @@ class Favoritos : Fragment() {
         initRecyclerView()
     }
     private fun initRecyclerView(){
-        binding.recyclerRuta.layoutManager = LinearLayoutManager(context)
-        binding.recyclerRuta.adapter = favAdapter(FavList.favoritos)
+        binding.recyclerFavoritos.layoutManager = LinearLayoutManager(context)
+        binding.recyclerFavoritos.adapter = favAdapter(FavList.favoritos)
     }
 
     companion object {
