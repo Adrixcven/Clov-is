@@ -42,11 +42,13 @@
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
                 android:src="@drawable/ejemplolong"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma"
                 app:srcCompat="@drawable/ejemplolong" />
+
             <TextView
                 android:id="@+id/img_de_arma_little"
                 android:layout_width="wrap_content"
@@ -65,6 +67,7 @@
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
                 android:src="@drawable/ejemplo"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma_little"
@@ -78,6 +81,7 @@
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/imagen_perk"
                 android:src="@drawable/ejemploperksluz"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -556,8 +560,35 @@
                 app:layout_constraintStart_toStartOf="@+id/editar_obtencion_arma"
                 app:layout_constraintTop_toBottomOf="@+id/editar_obtencion_arma" />
 
+            <ProgressBar
+                android:id="@+id/cargaImg"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="128dp"
+                android:layout_height="114dp"
+                android:layout_marginTop="84dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_de_arma" />
 
+            <ProgressBar
+                android:id="@+id/cargaImgLittle"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="97dp"
+                android:layout_height="91dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_de_arma_little" />
 
+            <ProgressBar
+                android:id="@+id/cargaPerks"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_perks" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

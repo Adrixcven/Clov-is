@@ -11,6 +11,10 @@
         tools:layout="@layout/fragment_add_arma" >
         <action
             android:id="@+id/action_addArma_to_seleccionarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/seleccionarArma" />
     </fragment>
     <fragment
@@ -20,9 +24,17 @@
         tools:layout="@layout/fragment_administrador_armas" >
         <action
             android:id="@+id/action_administradorArmas_to_editarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/editarArma" />
         <action
             android:id="@+id/action_administradorArmas_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/info_objects" />
         <argument android:name="id"
             app:argType="string" />
@@ -31,6 +43,10 @@
             app:argType="string" />
         <action
             android:id="@+id/action_administradorArmas_self"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/administradorArmas" />
     </fragment>
     <fragment
@@ -45,6 +61,10 @@
         tools:layout="@layout/fragment_editar_usuario" >
         <action
             android:id="@+id/action_editar_usuario_to_verUsuario"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/verUsuario" />
         <argument
             android:name="id"
@@ -57,6 +77,10 @@
         tools:layout="@layout/fragment_editar_weapon" >
         <action
             android:id="@+id/action_editarArma_to_administradorArmas"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/administradorArmas" />
         <argument
             android:name="id"
@@ -69,6 +93,10 @@
         tools:layout="@layout/fragment_info_objects" >
         <action
             android:id="@+id/action_info_objects_to_seleccionarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/seleccionarArma" />
         <argument
             android:name="id"
@@ -81,6 +109,10 @@
         tools:layout="@layout/fragment_seleccionar_arma" >
         <action
             android:id="@+id/action_seleccionarArma_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/info_objects" />
     </fragment>
     <fragment
@@ -90,6 +122,10 @@
         tools:layout="@layout/fragment_ver_usuario" >
         <action
             android:id="@+id/action_verUsuario_to_editar_usuario"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/editar_usuario" />
     </fragment>
     <fragment
@@ -99,6 +135,10 @@
         tools:layout="@layout/fragment_favoritos">
         <action
             android:id="@+id/action_favoritos_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/info_objects" />
     </fragment>
 </navigation>

@@ -125,10 +125,14 @@ class Info_objects : Fragment() {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgObject.setImageBitmap(bitmap)
             }.await()
+            binding.cargandoImg.visibility=View.INVISIBLE
+            binding.imgObject.visibility=View.VISIBLE
             storageRefPerks.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgPerks.setImageBitmap(bitmap)
             }.await()
+            binding.cargandoPerks.visibility=View.INVISIBLE
+            binding.imgPerks.visibility=View.VISIBLE
         }
     }
     fun favoritosadd(id: String){

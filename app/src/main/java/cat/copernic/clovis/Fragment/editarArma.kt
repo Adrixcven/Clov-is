@@ -262,14 +262,20 @@ class editarArma : Fragment() {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgObject.setImageBitmap(bitmap)
             }.await()
+            binding.cargaImg.visibility=View.INVISIBLE
+            binding.imgObject.visibility=View.VISIBLE
             storageRefPerks.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgPerks.setImageBitmap(bitmap)
             }.await()
+            binding.cargaPerks.visibility=View.INVISIBLE
+            binding.imgPerks.visibility=View.VISIBLE
             storageRefLittle.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgObjectLittle.setImageBitmap(bitmap)
             }.await()
+            binding.cargaImgLittle.visibility=View.INVISIBLE
+            binding.imgObject.visibility=View.VISIBLE
         }
     }
     fun llegirDades(): Arma {

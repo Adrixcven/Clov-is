@@ -20,10 +20,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
+import cat.copernic.clovis.Utils.Utilities
+import cat.copernic.clovis.Utils.Utilities.Companion.createNotification
+import cat.copernic.clovis.Utils.Utilities.Companion.createNotificationChannel
 import cat.copernic.clovis.data.dataArma
 import cat.copernic.clovis.databinding.FragmentAddArmaBinding
 import cat.copernic.clovis.datalist.ArmasList
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.installations.Utils
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
@@ -42,6 +46,10 @@ class addArma : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var channelID = "ChannelID"
+    private var channelName = "ChannelName"
+    private val notificationID = 0
+
     private lateinit var binding: FragmentAddArmaBinding
     private var bd = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -211,8 +219,11 @@ class addArma : Fragment() {
                             imageResourceId = selectedImage,
                             id = arma.nombre
                         )
+                        Utilities.createNotificationChannel(channelName, channelID, requireContext())
+                        Utilities.createNotification(requireContext(), channelID, notificationID)
+
                         ArmasList.armas.add(wallItem)
-                            view?.findNavController()?.navigate(R.id.action_addArma_to_seleccionarArma)
+                        view?.findNavController()?.navigate(R.id.action_addArma_to_seleccionarArma)
                     }
                         .addOnFailureListener{ //No s'ha afegit el departament...
                         val context: Context = requireContext()
@@ -248,6 +259,7 @@ class addArma : Fragment() {
 
         return Arma(nombre, descripcion, null, cargador, disparos, impacto, rango, estabilidad, recarga, aim, magazine, zoom, aire, recoil,null, donde)
     }
+
 
 
 
