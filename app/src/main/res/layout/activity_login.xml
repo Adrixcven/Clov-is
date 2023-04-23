@@ -80,7 +80,9 @@
         android:layout_marginTop="19dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_password">
+        app:layout_constraintTop_toBottomOf="@+id/txt_password"
+        app:endIconMode="password_toggle"
+        app:endIconDrawable="@drawable/password_toogle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TextInputCajaPassword"
@@ -88,6 +90,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:textColorHint="#546E7A"
+            android:inputType="textPassword"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

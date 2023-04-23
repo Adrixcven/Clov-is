@@ -78,10 +78,17 @@
     <string name="info_arma">Información Arma</string>
     <string name="select_arma">Seleccionar Arma</string>
     <string name="imagen_favoritos">Imagen Favoritos</string>
+    <string name="imagen_peque_a_del_arma">Imagen pequeña del arma</string>
+    <string name="estrella_favoritos">Estrella Favoritos</string>
     <string-array name="class_options">
         <item>Selecciona Clase</item>
         <item>Cazador</item>
         <item>Titan</item>
         <item>Hechicero</item>
+    </string-array>
+    <string-array name="idiomas_options">
+        <item>Castellano</item>
+        <item>Catalan</item>
+        <item>Ingles</item>
     </string-array>
 </resources>

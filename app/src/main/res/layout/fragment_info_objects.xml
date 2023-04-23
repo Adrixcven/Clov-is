@@ -23,6 +23,15 @@
             android:padding="25dp">
 
             <ImageView
+                android:id="@+id/imgStar"
+                android:layout_width="@dimen/star"
+                android:layout_height="@dimen/star"
+                android:contentDescription="@string/estrella_favoritos"
+                android:src="@drawable/estrellaoff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
                 android:id="@+id/img_object"
                 android:layout_width="wrap_content"
                 android:layout_height="232dp"
@@ -31,13 +40,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ejemplolong" />
+                app:layout_constraintTop_toBottomOf="@+id/imgStar"
+                app:srcCompat="@drawable/placeholder" />
 
             <ImageView
                 android:id="@+id/img_perks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/imagen_perk"
                 android:src="@drawable/ejemploperksluz"
@@ -52,7 +61,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/nombre"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +73,6 @@
                 android:layout_marginTop="15dp"
                 android:paddingLeft="@dimen/default_margin_for_description"
                 android:paddingRight="@dimen/default_margin_for_description"
-                android:text="@string/description"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +95,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintStart_toEndOf="@+id/txt_cargador"
                 app:layout_constraintTop_toBottomOf="@+id/txt_descriptionObject" />
@@ -109,7 +115,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_num_cargador" />
@@ -130,7 +135,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_airassist_num" />
@@ -151,7 +155,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_num_disparos" />
@@ -172,7 +175,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_impacto_num" />
@@ -193,7 +195,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_rango_num" />
@@ -214,7 +215,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_stability_num" />
@@ -235,7 +235,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_reload_num" />
@@ -256,7 +255,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_aim_num" />
@@ -277,7 +275,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_inventario_num" />
@@ -298,7 +295,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="17dp"
-                android:text="@string/num_example"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_zoom_num" />
@@ -331,12 +327,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="40dp"
-                android:text="@string/ejemplo"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info_where" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

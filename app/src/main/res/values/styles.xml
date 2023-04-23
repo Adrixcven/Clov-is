@@ -58,4 +58,8 @@
         <item name="android:textSize">@dimen/Check_size</item>
         <item name="android:buttonTint">@color/darkgrey</item>
     </style>
+
+    <style name="ConstraintLayoutFragment">
+        <item name="android:background">@color/darkgrey</item>
+    </style>
 </resources>

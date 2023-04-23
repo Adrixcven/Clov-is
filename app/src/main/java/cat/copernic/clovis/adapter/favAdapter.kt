@@ -23,8 +23,8 @@ class favAdapter(private val FavList:List<dataFav>) :
         with(holder) {
             with(FavList[position]) {
                 binding.nameWeapon.text= this.nombre
-                binding.imgWeapon.setImageResource(this.imageResourceId)
-                binding.servId.text=this.id
+                binding.imgWeapon.setImageBitmap(this.imageResourceId)
+                binding.servId.text =this.id
             }
             binding.cardRutas.setOnClickListener { view ->
                 val document = binding.nameWeapon.text.toString()

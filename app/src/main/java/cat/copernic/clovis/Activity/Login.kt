@@ -6,16 +6,23 @@ import android.util.Log
 import android.view.inputmethod.InputBinding
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import cat.copernic.clovis.R
 import cat.copernic.clovis.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private var bd = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (supportActionBar != null)
@@ -73,9 +80,11 @@ class Login : AppCompatActivity() {
         super.onStart()
         val user = Firebase.auth.currentUser
         if (user != null) {
-            var intent = Intent(this@Login, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    entrarconadmin()
+                }
+            }
         }
     }
     fun loguinar(correo:String, contrasena:String){
@@ -83,8 +92,12 @@ class Login : AppCompatActivity() {
 
         auth.signInWithEmailAndPassword(correo,contrasena).addOnCompleteListener(this){task ->
             if(task.isSuccessful){
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        entrarconadmin()
+                    }
+                }
+
             }else{
                 builder.setTitle("Error")
                 builder.setMessage("Ha ocurrido un fallo en el inicio de sesión")
@@ -94,4 +107,22 @@ class Login : AppCompatActivity() {
             }
         }
     }
+    private suspend fun entrarconadmin() {
+        lifecycleScope.launch {
+            auth = Firebase.auth
+            var actual = auth.currentUser
+            bd.collection("Users").document(actual!!.email.toString()).get().addOnSuccessListener {
+                if(it.get("admin") == true ){
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val intent = Intent(applicationContext, MainActivity_Users::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }.await()
+        }
+    }
+
 }

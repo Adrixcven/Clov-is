@@ -29,6 +29,9 @@
         <argument
             android:name="document"
             app:argType="string" />
+        <action
+            android:id="@+id/action_administradorArmas_self"
+            app:destination="@id/administradorArmas" />
     </fragment>
     <fragment
         android:id="@+id/ajustes"

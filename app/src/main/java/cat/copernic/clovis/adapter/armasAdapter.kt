@@ -23,11 +23,11 @@ class armasAdapter(private val Armalist:List<dataArma>) :
         with(holder) {
             with(Armalist[position]) {
                 binding.nameWeapon.text= this.nombre
-                binding.imgWeapon.setImageResource(this.imageResourceId)
-                binding.servId.text=this.id
+                binding.imgWeapon.setImageBitmap(this.imageResourceId)
+                binding.servId.text = this.id
             }
             binding.cardRutas.setOnClickListener { view ->
-                val document = binding.nameWeapon.text.toString()
+                val document = binding.servId.text.toString()
                 val directions = SeleccionarArmaDirections.actionSeleccionarArmaToInfoObjects(document)
                 view.findNavController().navigate(directions)
             }

@@ -3,9 +3,10 @@ package cat.copernic.clovis.Fragment
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,20 +15,26 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import cat.copernic.clovis.R
-import cat.copernic.clovis.databinding.FragmentAdministradorArmasBinding
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
-import cat.copernic.clovis.databinding.FragmentEditarWeaponBinding
-import androidx.navigation.fragment.navArgs
-import cat.copernic.clovis.Models.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
+import com.google.firebase.storage.StorageMetadata
+
+import com.google.android.gms.tasks.OnSuccessListener
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.io.File
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +54,7 @@ class editar_usuario : Fragment() {
     val args: editar_usuarioArgs by navArgs()
     private lateinit var classSpinner: Spinner
     private lateinit var auth: FirebaseAuth
+    private var bd = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,10 +76,17 @@ class editar_usuario : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var nom = args.id
         var selectedOption = ""
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                ponerusuario()
+                ponerfoto()
+            }
+        }
+
         classSpinner = binding.spinnerClases
         ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.class_options,
+            cat.copernic.clovis.R.array.class_options,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
@@ -95,17 +110,18 @@ class editar_usuario : Fragment() {
             }
         })
 
-        binding.nom.setText(nom)
 
         binding.fotoperfil.setOnClickListener{
             intentfotoperfil.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
         binding.guardarPerfil.setOnClickListener {
-            view.findNavController().navigate(R.id.action_editar_usuario_to_verUsuario)
+            modificarusuario(selectedOption)
+
+            view.findNavController().navigate(cat.copernic.clovis.R.id.action_editar_usuario_to_verUsuario)
         }
     }
     private var storage = FirebaseStorage.getInstance()
-    private var storageRef = storage.getReference().child("image/rutas").child(".jpeg")
+    private var storageRef = storage.getReference().child("image/usuarios").child(".jpeg")
     private val intentfotoperfil = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             auth = Firebase.auth
@@ -124,6 +140,59 @@ class editar_usuario : Fragment() {
             binding.fotoperfil.setImageBitmap(imageBitmap)
         }
     }
+    private suspend fun ponerusuario(){
+        lifecycleScope.launch {
+            auth = Firebase.auth
+            var actual = auth.currentUser
+            bd.collection("Users").document(actual!!.email.toString()).get().addOnSuccessListener {
+                binding.nom.setText(it.get("name").toString())
+                binding.id.setText(it.get("id").toString())
+                binding.correoElectronico.setText(it.get("email").toString())
+                if (it.get("clase").toString() == "Hechicero") {
+                    binding.spinnerClases.setSelection(3)
+                } else if (it.get("clase").toString() == "Cazador") {
+                    binding.spinnerClases.setSelection(1)
+                } else if (it.get("clase").toString() == "Titan") {
+                    binding.spinnerClases.setSelection(2)
+                } else {
+                    binding.spinnerClases.setSelection(0)
+                }
+                binding.informacion.setText(it.get("descripcion").toString())
+            }.await()
+        }
+    }
+    private suspend fun ponerfoto(){
+        lifecycleScope.launch {
+            auth = Firebase.auth
+            var actual = auth.currentUser
+            val email = actual!!.email.toString()
+            val ref = FirebaseStorage.getInstance().reference.child("image/usuarios/$email.jpeg")
+            ref.getMetadata().addOnSuccessListener {
+                val storageRef =
+                    FirebaseStorage.getInstance().reference.child("image/usuarios/$email.jpeg")
+
+                var localfile = File.createTempFile("tempImage", "jpeg")
+                storageRef.getFile(localfile).addOnSuccessListener {
+                    val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    binding.fotoperfil.setImageBitmap(bitmap)
+                }
+            }.await()
+        }
+    }
+    fun modificarusuario(selectedoOption:String){
+        auth = Firebase.auth
+        var actual = auth.currentUser
+        bd.collection("Users").document(actual!!.email.toString()).set(
+            hashMapOf( "name" to binding.nom.text.toString(),
+                "id" to binding.id.text.toString(),
+                "email" to binding.correoElectronico.text.toString().lowercase(),
+                "clase" to selectedoOption,
+                "descripcion" to binding.informacion.text.toString(),
+                "admin" to false
+            )
+        )
+    }
+
 
 
     companion object {

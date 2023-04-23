@@ -52,4 +52,6 @@
     <dimen name="item_arma_width">175dp</dimen>
     <dimen name="item_admin_width">249dp</dimen>
     <dimen name="item_admin_height">295dp</dimen>
+    <!--star-->
+    <dimen name="star">40dp</dimen>
 </resources>

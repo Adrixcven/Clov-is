@@ -2,11 +2,15 @@ package cat.copernic.clovis.Activity
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import cat.copernic.clovis.Models.Usuario
 import cat.copernic.clovis.R
 
@@ -15,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -39,8 +45,9 @@ class Register : AppCompatActivity() {
             var repContrasena = binding.TextInputCajaEepPasswordRegister.text.toString()
 
             val builder = AlertDialog.Builder(this)
+
+            if(contrasena.equals(repContrasena)&&campoVacio(correo,contrasena,repContrasena)&&contrasena.length >= 6){
                 registrar(correo,contrasena)
-            if(contrasena.equals(repContrasena)&&campoVacio(correo,contrasena,repContrasena)){
                 startActivity(Intent(this, Login::class.java))
                 finish()
             }else if(correo.isBlank()&&contrasena.isNotEmpty()){
@@ -67,6 +74,12 @@ class Register : AppCompatActivity() {
                 builder.setPositiveButton("Aceptar", null)
                 val dialog = builder.create()
                 dialog.show()
+            }else if(contrasena.length < 6||repContrasena.length < 6){
+                builder.setTitle("Error")
+                builder.setMessage("La contraseña es demasiado pequeña. Tiene que ser de minimo 6 digitos")
+                builder.setPositiveButton("Aceptar", null)
+                val dialog = builder.create()
+                dialog.show()
             }
         }
 
@@ -83,12 +96,12 @@ class Register : AppCompatActivity() {
     }
     fun registrar(correo: String, contrasena: String) {
         val builder = AlertDialog.Builder(this)
-        auth.createUserWithEmailAndPassword(correo,contrasena).addOnCompleteListener {
+        if (contrasena.length >= 6) {
+
+            auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener {
                 if (it.isSuccessful) {
                     var usuario = llegirDades()
                     bd.collection("Users").document(usuario.email).set(
-                        //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
-                        // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
                         hashMapOf(
                             "id" to usuario.id,
                             "email" to usuario.email,
@@ -96,9 +109,9 @@ class Register : AppCompatActivity() {
                             "descripcion" to usuario.descripcion,
                             "clase" to usuario.clase,
                             "admin" to usuario.admin
-
-                        ))
-                        .addOnFailureListener{ //No s'ha afegit el departament...
+                        )
+                    )
+                        .addOnFailureListener { //No s'ha afegit el departament...
                             val context: Context = applicationContext
                             val builder = AlertDialog.Builder(context)
                             builder.setMessage("No se ha podido crear el usuario")
@@ -106,12 +119,14 @@ class Register : AppCompatActivity() {
                             val dialog = builder.create()
                             dialog.show()
                         }
-                    //USERS     FAVORITOS RUTAS
-                    bd.collection("Users").document(usuario.email).collection("Favoritos").document().set(
-                        HashMap<String, Any>())
+                    //USERS     FAVORITOS
+                    bd.collection("Users").document(usuario.email).collection("Favoritos")
+                        .document().set(
+                        HashMap<String, Any>()
+                    )
                         .addOnSuccessListener {
                         }
-                        .addOnFailureListener{
+                        .addOnFailureListener {
                             val context: Context = applicationContext
                             val builder = AlertDialog.Builder(context)
                             builder.setMessage("No se ha podido crear la subclase de favoritos")
@@ -119,10 +134,35 @@ class Register : AppCompatActivity() {
                             val dialog = builder.create()
                             dialog.show()
                         }
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val db = FirebaseFirestore.getInstance()
+                    val parentDocRef = db.collection("Users").document(usuario.email)
+                    val subCollectionRef = parentDocRef.collection("Favoritos")
+                    subCollectionRef.get().addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            // Borrar cada documento en la subcolección
+                            subCollectionRef.document(document.id).delete()
+                        }
+                    }
+
+                    val drawable = ContextCompat.getDrawable(this, R.drawable.foto_perfil)
+
+                    val file = File.createTempFile("tempImage", "png", this.cacheDir)
+                    file.outputStream().use { outputStream ->
+                        drawable?.toBitmap()?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                    }
+
+                    val storageRef =
+                        FirebaseStorage.getInstance().reference.child("image/usuarios/${usuario.email}.jpeg")
+                    storageRef.putFile(Uri.fromFile(file)).addOnSuccessListener {
+                    }.addOnFailureListener { e ->
+                    }
+
+
+                    startActivity(Intent(this, Login::class.java))
                     finish()
                 }
             }
+        }
     }
     fun llegirDades():Usuario{
         //Guardem les dades introduïdes per l'usuari
@@ -131,7 +171,7 @@ class Register : AppCompatActivity() {
 
         //Afegim els treballadors introduïts per l'usuari a l'atribut treballadors
 
-        return Usuario(null, id, Correo, null, false, null, null)
+        return Usuario("", id, Correo, "", false, "", null)
     }
 
 

@@ -1,16 +1,27 @@
 package cat.copernic.clovis.Fragment
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import cat.copernic.clovis.R
 import cat.copernic.clovis.databinding.FragmentInfoObjectsBinding
-import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
-import cat.copernic.clovis.databinding.FragmentVerUsuarioBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.io.File
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +39,9 @@ class Info_objects : Fragment() {
     private var param2: String? = null
     private lateinit var binding: FragmentInfoObjectsBinding
     val args: Info_objectsArgs by navArgs()
+    private lateinit var auth: FirebaseAuth
+    private var bd = FirebaseFirestore.getInstance()
+    var id = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +61,91 @@ class Info_objects : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var nom = args.id
-        binding.txtNameObj.text = nom
+        id = args.id
+        auth = Firebase.auth
+        var actual = auth.currentUser
+        val db = FirebaseFirestore.getInstance()
+        val subcollectionRef = db.collection("Users").document(actual!!.email.toString()).collection("Favoritos")
+        subcollectionRef.document(id).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val document = task.result
+                    if (document.exists()) {
+                        binding.imgStar.setImageResource(R.drawable.estrellaon)
+                    }
+                }
+            }
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                ponerdatos(id)
+                ponerimagenes(id)
+            }
+        }
+        binding.imgStar.setOnClickListener {
+            subcollectionRef.document(id).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val document = task.result
+                    if (document.exists()) {
+                        favoritosdelete(id)
+                    } else {
+                        favoritosadd(id)
+                    }
+                }
+            }
+        }
+    }
+    private suspend fun ponerdatos(id: String) {
+        lifecycleScope.launch {
+            bd.collection("Armas").document(id).get().addOnSuccessListener {
+                binding.txtNameObj.setText(it.get("Nombre").toString())
+                binding.txtDescriptionObject.setText(it.get("Descripcion").toString())
+                binding.txtNumCargador.setText(it.get("Cargador").toString())
+                binding.txtNumDisparos.setText(it.get("Disparos por minuto").toString())
+                binding.txtImpactoNum.setText(it.get("Impacto").toString())
+                binding.txtRangoNum.setText(it.get("Rango").toString())
+                binding.txtStabilityNum.setText(it.get("Estabilidad").toString())
+                binding.txtReloadNum.setText(it.get("Recarga").toString())
+                binding.txtInventarioNum.setText(it.get("Tamano del inventario").toString())
+                binding.txtAimNum.setText(it.get("Asistencia de apuntado").toString())
+                binding.txtZoomNum.setText(it.get("Zoom").toString())
+                binding.txtAirassistNum.setText(it.get("Asistencia en aire").toString())
+                binding.txtRecoilNum.setText(it.get("Retroceso").toString())
+                binding.infoWhereNum.setText(it.get("Ubicación").toString())
+            }.await()
+        }
+    }
+    private suspend fun ponerimagenes(id:String){
+        lifecycleScope.launch {
+            val storageRefPerks =
+                FirebaseStorage.getInstance().reference.child("image/Perks/$id" + "perk.jpeg")
+            val storageRef =
+                FirebaseStorage.getInstance().reference.child("image/Armas/$id" + "Image.jpeg")
+
+            var localfile = File.createTempFile("tempImage", "jpeg")
+            storageRef.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.imgObject.setImageBitmap(bitmap)
+            }.await()
+            storageRefPerks.getFile(localfile).addOnSuccessListener {
+                val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                binding.imgPerks.setImageBitmap(bitmap)
+            }.await()
+        }
+    }
+    fun favoritosadd(id: String){
+        auth = Firebase.auth
+        var actual = auth.currentUser
+        bd.collection("Users").document(actual!!.email.toString()).collection("Favoritos").document(id).set(
+            hashMapOf(
+                "Nombre" to binding.txtNameObj.text.toString()
+            )
+        )
+        binding.imgStar.setImageResource(R.drawable.estrellaon)
+    }
+    fun favoritosdelete (id:String){
+        auth = Firebase.auth
+        var actual = auth.currentUser
+        bd.collection("Users").document(actual!!.email.toString()).collection("Favoritos").document(id).delete()
+        binding.imgStar.setImageResource(R.drawable.estrellaoff)
     }
 
 

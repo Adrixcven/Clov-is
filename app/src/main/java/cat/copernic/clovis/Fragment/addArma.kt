@@ -20,7 +20,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
+import cat.copernic.clovis.data.dataArma
 import cat.copernic.clovis.databinding.FragmentAddArmaBinding
+import cat.copernic.clovis.datalist.ArmasList
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
@@ -66,16 +68,19 @@ class addArma : Fragment() {
         }
         binding.imgPerks.setOnClickListener {
             intentimgperk.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI))
-
+        }
+        binding.imgObjectLittle.setOnClickListener {
+            intentimgLittle.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI))
         }
         binding.Guardar.setOnClickListener {
             addweapon()
-            view.findNavController().navigate(R.id.action_addArma_to_seleccionarArma)
+
         }
     }
     private var storage = FirebaseStorage.getInstance()
     private var storageRefarmas  = storage.getReference().child("image/Armas").child("a.jpeg")
     private var storageRefPerks  = storage.getReference().child("image/Perks").child("a.jpeg")
+    private var storageRefLittle  = storage.getReference().child("image/Little").child("a.jpeg")
     private val intentimgweapon = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val imageUri = result.data?.data
@@ -136,33 +141,91 @@ class addArma : Fragment() {
             }
         }
     }
+    var selectedImage= Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
+    private val intentimgLittle = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val imageUri = result.data?.data
+            if (imageUri != null) {
+                try {
+                    if (binding.editarNombreArma.text.toString() != ""){
+                        var texta = binding.editarNombreArma.text.toString() + "Little.jpeg"
+                        val imageStream = requireContext().contentResolver.openInputStream(imageUri)
+                        selectedImage = BitmapFactory.decodeStream(imageStream)
+                        val baos = ByteArrayOutputStream()
+                        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                        val data = baos.toByteArray()
+                        storageRefLittle = storage.getReference().child("image/Little").child(texta)
+                        var uploadTask = storageRefLittle.putBytes(data)
+                        uploadTask.addOnFailureListener {
+                        }.addOnSuccessListener { taskSnapshot ->
+                        }
+                        binding.imgObjectLittle.setImageBitmap(selectedImage)
+                    }else{
+                        Toast.makeText(requireContext(), "No existe ningun nombre para identificar la imagen", Toast.LENGTH_LONG).show()
+                    }
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                    Toast.makeText(requireContext(), "File not found.", Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Image not found.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
     fun addweapon(){
         var arma = llegirDades()
-        bd.collection("Armas").document(arma.nombre).set(
-            //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
-            // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
-            hashMapOf(
-                "Nombre" to arma.nombre,
-                "Descripcion" to arma.descripcion,
-                "Cargador" to arma.cargador,
-                "Disparos por minuto" to arma.disparos,
-                "Impacto" to arma.impacto,
-                "Rango" to arma.rango,
-                "Estabilidad" to arma.estabilidad,
-                "Recarga" to arma.recarga,
-                "Asistencia de apuntado" to arma.aim,
-                "Tamaño del inventario" to arma.inventario,
-                "Zoom" to arma.zoom,
-                "Retroceso" to arma.recoil,
-                "Ubicación" to arma.donde
-            )).addOnFailureListener{ //No s'ha afegit el departament...
-            val context: Context = requireContext()
-            val builder = AlertDialog.Builder(context)
-            builder.setMessage("No se ha podido crear el arma")
-            builder.setPositiveButton("Aceptar", null)
-            val dialog = builder.create()
-            dialog.show()
+        val db = FirebaseFirestore.getInstance()
+        val subcollectionRef = db.collection("Armas")
+        subcollectionRef.document(arma.nombre).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                if (document.exists()) {
+                    val context: Context = requireContext()
+                    val builder = AlertDialog.Builder(context)
+                    builder.setMessage("El arma ya existe")
+                    builder.setPositiveButton("Aceptar", null)
+                    val dialog = builder.create()
+                    dialog.show()
+                }else{
+                    bd.collection("Armas").document(arma.nombre).set(
+                        //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
+                        // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
+                        hashMapOf(
+                            "Nombre" to arma.nombre,
+                            "Descripcion" to arma.descripcion,
+                            "Cargador" to arma.cargador,
+                            "Disparos por minuto" to arma.disparos,
+                            "Impacto" to arma.impacto,
+                            "Rango" to arma.rango,
+                            "Estabilidad" to arma.estabilidad,
+                            "Recarga" to arma.recarga,
+                            "Asistencia de apuntado" to arma.aim,
+                            "Tamano del inventario" to arma.inventario,
+                            "Zoom" to arma.zoom,
+                            "Asistencia en aire" to arma.aire,
+                            "Retroceso" to arma.recoil,
+                            "Ubicación" to arma.donde
+                        )).addOnSuccessListener {
+                        val wallItem = dataArma(
+                            nombre = arma.nombre,
+                            imageResourceId = selectedImage,
+                            id = arma.nombre
+                        )
+                        ArmasList.armas.add(wallItem)
+                            view?.findNavController()?.navigate(R.id.action_addArma_to_seleccionarArma)
+                    }
+                        .addOnFailureListener{ //No s'ha afegit el departament...
+                        val context: Context = requireContext()
+                        val builder = AlertDialog.Builder(context)
+                        builder.setMessage("No se ha podido crear el arma")
+                        builder.setPositiveButton("Aceptar", null)
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
+                }
+            }
         }
+
     }
     fun llegirDades(): Arma {
         //Guardem les dades introduïdes per l'usuari
@@ -185,6 +248,7 @@ class addArma : Fragment() {
 
         return Arma(nombre, descripcion, null, cargador, disparos, impacto, rango, estabilidad, recarga, aim, magazine, zoom, aire, recoil,null, donde)
     }
+
 
 
     companion object {

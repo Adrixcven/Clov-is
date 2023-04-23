@@ -28,11 +28,12 @@
                 android:id="@+id/img_de_arma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:text="@string/imagen_arma"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/editar_name_arma" />
 
             <ImageView
                 android:id="@+id/img_object"
@@ -46,6 +47,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma"
                 app:srcCompat="@drawable/ejemplolong" />
+            <TextView
+                android:id="@+id/img_de_arma_little"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/imagen_peque_a_del_arma"
+                android:textSize="@dimen/size_title2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_object" />
+
+            <ImageView
+                android:id="@+id/img_object_little"
+                android:layout_width="212dp"
+                android:layout_height="124dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/imagen_arma"
+                android:src="@drawable/ejemplo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_de_arma_little"
+                app:srcCompat="@drawable/ejemplo"
+                tools:ignore="ImageContrastCheck" />
 
             <ImageView
                 android:id="@+id/img_perks"
@@ -64,16 +88,15 @@
                 android:id="@+id/txt_nameObj"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:text="@string/nombre"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_object" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_name_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:maxLength="10"
+                    android:maxLength="100"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -99,11 +122,11 @@
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editar_name_arma" />
+                app:layout_constraintTop_toBottomOf="@+id/img_object_little" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_desc_arma"
-                android:layout_width="346dp"
+                android:layout_width="0dp"
                 android:layout_height="122dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -136,9 +159,11 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_cargador_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_cargador">
@@ -147,7 +172,7 @@
                     android:id="@+id/editar_ammo_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -158,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="50dp"
                 android:text="@string/disparos_por_minuto"
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +191,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_dps_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -179,7 +204,7 @@
                     android:id="@+id/editar_disparos_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -199,7 +224,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_impacto_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -212,7 +237,7 @@
                     android:id="@+id/editar_impact_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -231,7 +256,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_rango_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -244,7 +269,7 @@
                     android:id="@+id/editar_distancia_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -263,7 +288,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_estabilidad_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -276,7 +301,7 @@
                     android:id="@+id/editar_stability_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -295,7 +320,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_recarga_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -308,7 +333,7 @@
                     android:id="@+id/editar_reload_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -327,7 +352,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_apuntado_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -340,7 +365,7 @@
                     android:id="@+id/editar_aimassist_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -359,7 +384,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_inv_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -372,7 +397,7 @@
                     android:id="@+id/editar_magazine_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -392,7 +417,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_zoom_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -405,7 +430,7 @@
                     android:id="@+id/editar_zoomm_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number|text"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -426,7 +451,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_aire_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -439,7 +464,7 @@
                     android:id="@+id/editar_airassist_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -458,7 +483,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_recoil_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
@@ -471,7 +496,7 @@
                     android:id="@+id/editar_retroceso_arma"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:textSize="@dimen/size_title3"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -501,11 +526,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_obtencion_arma"
-                android:layout_width="@dimen/TxtInput_width"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info_where">
