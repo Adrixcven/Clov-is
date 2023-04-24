@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatDelegate
 import cat.copernic.clovis.R
 import java.util.*
 import kotlin.concurrent.schedule
@@ -15,6 +16,7 @@ class SplashScreen : AppCompatActivity() {
     private lateinit var logo: ImageView
     private lateinit var anim: Animation
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         logo = findViewById(R.id.logo)

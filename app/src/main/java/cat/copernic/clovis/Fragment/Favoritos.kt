@@ -108,6 +108,7 @@ class Favoritos : Fragment() {
             binding.recyclerFavoritos.layoutManager = LinearLayoutManager(context)
             binding.recyclerFavoritos.adapter = favAdapter(FavList.favoritos)
 
+
         }
     }
     private fun initRecyclerView(view: View) {
@@ -115,11 +116,15 @@ class Favoritos : Fragment() {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
                     recycleFav()
+                    binding.loadingFav.visibility = View.INVISIBLE
+                    binding.recyclerFavoritos.visibility = View.VISIBLE
                 }
             }
         }else {
             binding.recyclerFavoritos.layoutManager = LinearLayoutManager(context)
             binding.recyclerFavoritos.adapter = favAdapter(FavList.favoritos)
+            binding.loadingFav.visibility = View.INVISIBLE
+            binding.recyclerFavoritos.visibility = View.VISIBLE
         }
     }
 

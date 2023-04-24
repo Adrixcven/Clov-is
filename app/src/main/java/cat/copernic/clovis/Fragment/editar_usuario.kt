@@ -16,10 +16,13 @@ import android.widget.Spinner
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.clovis.Models.Usuario
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
+import cat.copernic.clovis.datalist.AdminList.Companion.admin
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -76,9 +79,10 @@ class editar_usuario : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var nom = args.id
         var selectedOption = ""
+        var admina = MutableLiveData<Boolean>(false)
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                ponerusuario()
+                ponerusuario(admina)
                 ponerfoto()
             }
         }
@@ -115,7 +119,7 @@ class editar_usuario : Fragment() {
             intentfotoperfil.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
         binding.guardarPerfil.setOnClickListener {
-            modificarusuario(selectedOption)
+            modificarusuario(selectedOption, admina)
 
             view.findNavController().navigate(cat.copernic.clovis.R.id.action_editar_usuario_to_verUsuario)
         }
@@ -140,7 +144,7 @@ class editar_usuario : Fragment() {
             binding.fotoperfil.setImageBitmap(imageBitmap)
         }
     }
-    private suspend fun ponerusuario(){
+    private suspend fun ponerusuario(admina: MutableLiveData<Boolean>){
         lifecycleScope.launch {
             auth = Firebase.auth
             var actual = auth.currentUser
@@ -158,6 +162,7 @@ class editar_usuario : Fragment() {
                     binding.spinnerClases.setSelection(0)
                 }
                 binding.informacion.setText(it.get("descripcion").toString())
+                admina.value = it.get("admin") as Boolean
             }.await()
         }
     }
@@ -179,18 +184,33 @@ class editar_usuario : Fragment() {
             }.await()
         }
     }
-    fun modificarusuario(selectedoOption:String){
+    fun modificarusuario(selectedoOption:String, admina: MutableLiveData<Boolean>){
         auth = Firebase.auth
         var actual = auth.currentUser
+        var user = llegirDades(selectedoOption, admina)
         bd.collection("Users").document(actual!!.email.toString()).set(
-            hashMapOf( "name" to binding.nom.text.toString(),
-                "id" to binding.id.text.toString(),
-                "email" to binding.correoElectronico.text.toString().lowercase(),
-                "clase" to selectedoOption,
-                "descripcion" to binding.informacion.text.toString(),
-                "admin" to false
+            hashMapOf( "name" to user.nombre,
+                "id" to user.id,
+                "email" to user.email,
+                "clase" to user.clase,
+                "descripcion" to user.descripcion,
+                "admin" to user.admin
             )
         )
+    }
+    fun llegirDades(selectedoOption:String, admina: MutableLiveData<Boolean>): Usuario {
+        //Guardem les dades introduïdes per l'usuari
+        var nom = binding.nom.text.toString()
+        var id = binding.id.text.toString()
+        var Correo = binding.correoElectronico.text.toString()
+        var clase = selectedoOption
+        var info = binding.informacion.text.toString()
+        var admin = admina.value
+
+
+        //Afegim els treballadors introduïts per l'usuari a l'atribut treballadors
+
+        return Usuario(nom, id, Correo, info, admin!!, clase, null)
     }
 
 

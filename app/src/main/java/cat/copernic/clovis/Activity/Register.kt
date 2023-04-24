@@ -101,65 +101,90 @@ class Register : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener {
                 if (it.isSuccessful) {
                     var usuario = llegirDades()
-                    bd.collection("Users").document(usuario.email).set(
-                        hashMapOf(
-                            "id" to usuario.id,
-                            "email" to usuario.email,
-                            "name" to usuario.nombre,
-                            "descripcion" to usuario.descripcion,
-                            "clase" to usuario.clase,
-                            "admin" to usuario.admin
-                        )
-                    )
-                        .addOnFailureListener { //No s'ha afegit el departament...
+
+                    val docRef = bd.collection("Users").document(usuario.email)
+                    docRef.get().addOnCompleteListener{task ->
+                        if (task.isSuccessful) {
+                            val document = task.result
+                            if (document != null && document.exists()) {
+                                val context: Context = applicationContext
+                                val builder = AlertDialog.Builder(context)
+                                builder.setMessage("El archivo ya existe")
+                                builder.setPositiveButton("Aceptar", null)
+                                val dialog = builder.create()
+                                dialog.show()
+                            } else {
+                                bd.collection("Users").document(usuario.email).set(
+                                    hashMapOf(
+                                        "id" to usuario.id,
+                                        "email" to usuario.email,
+                                        "name" to usuario.nombre,
+                                        "descripcion" to usuario.descripcion,
+                                        "clase" to usuario.clase,
+                                        "admin" to usuario.admin
+                                    )
+                                )
+                                    .addOnFailureListener { //No s'ha afegit el departament...
+                                        val context: Context = applicationContext
+                                        val builder = AlertDialog.Builder(context)
+                                        builder.setMessage("No se ha podido crear el usuario")
+                                        builder.setPositiveButton("Aceptar", null)
+                                        val dialog = builder.create()
+                                        dialog.show()
+                                    }
+                                //USERS     FAVORITOS
+                                bd.collection("Users").document(usuario.email).collection("Favoritos")
+                                    .document().set(
+                                        HashMap<String, Any>()
+                                    )
+                                    .addOnSuccessListener {
+                                    }
+                                    .addOnFailureListener {
+                                        val context: Context = applicationContext
+                                        val builder = AlertDialog.Builder(context)
+                                        builder.setMessage("No se ha podido crear la subclase de favoritos")
+                                        builder.setPositiveButton("Aceptar", null)
+                                        val dialog = builder.create()
+                                        dialog.show()
+                                    }
+                                val db = FirebaseFirestore.getInstance()
+                                val parentDocRef = db.collection("Users").document(usuario.email)
+                                val subCollectionRef = parentDocRef.collection("Favoritos")
+                                subCollectionRef.get().addOnSuccessListener { documents ->
+                                    for (document in documents) {
+                                        // Borrar cada documento en la subcolección
+                                        subCollectionRef.document(document.id).delete()
+                                    }
+                                }
+
+                                val drawable = ContextCompat.getDrawable(this, R.drawable.foto_perfil)
+
+                                val file = File.createTempFile("tempImage", "png", this.cacheDir)
+                                file.outputStream().use { outputStream ->
+                                    drawable?.toBitmap()?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                                }
+
+                                val storageRef =
+                                    FirebaseStorage.getInstance().reference.child("image/usuarios/${usuario.email}.jpeg")
+                                storageRef.putFile(Uri.fromFile(file)).addOnSuccessListener {
+                                }.addOnFailureListener { e ->
+                                }
+
+
+                                startActivity(Intent(this, Login::class.java))
+                                finish()
+                            }
+                        }else{
                             val context: Context = applicationContext
                             val builder = AlertDialog.Builder(context)
-                            builder.setMessage("No se ha podido crear el usuario")
+                            builder.setMessage("Error al asegurar que no existe el usuario")
                             builder.setPositiveButton("Aceptar", null)
                             val dialog = builder.create()
                             dialog.show()
                         }
-                    //USERS     FAVORITOS
-                    bd.collection("Users").document(usuario.email).collection("Favoritos")
-                        .document().set(
-                        HashMap<String, Any>()
-                    )
-                        .addOnSuccessListener {
-                        }
-                        .addOnFailureListener {
-                            val context: Context = applicationContext
-                            val builder = AlertDialog.Builder(context)
-                            builder.setMessage("No se ha podido crear la subclase de favoritos")
-                            builder.setPositiveButton("Aceptar", null)
-                            val dialog = builder.create()
-                            dialog.show()
-                        }
-                    val db = FirebaseFirestore.getInstance()
-                    val parentDocRef = db.collection("Users").document(usuario.email)
-                    val subCollectionRef = parentDocRef.collection("Favoritos")
-                    subCollectionRef.get().addOnSuccessListener { documents ->
-                        for (document in documents) {
-                            // Borrar cada documento en la subcolección
-                            subCollectionRef.document(document.id).delete()
-                        }
+
                     }
 
-                    val drawable = ContextCompat.getDrawable(this, R.drawable.foto_perfil)
-
-                    val file = File.createTempFile("tempImage", "png", this.cacheDir)
-                    file.outputStream().use { outputStream ->
-                        drawable?.toBitmap()?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-                    }
-
-                    val storageRef =
-                        FirebaseStorage.getInstance().reference.child("image/usuarios/${usuario.email}.jpeg")
-                    storageRef.putFile(Uri.fromFile(file)).addOnSuccessListener {
-                    }.addOnFailureListener { e ->
-                    }
-
-
-                    startActivity(Intent(this, Login::class.java))
-                    finish()
                 }
             }
         }

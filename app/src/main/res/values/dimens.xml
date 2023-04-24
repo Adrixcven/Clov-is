@@ -54,4 +54,7 @@
     <dimen name="item_admin_height">295dp</dimen>
     <!--star-->
     <dimen name="star">40dp</dimen>
+    <!--cargando-->
+    <dimen name="loadingwidth">170dp</dimen>
+    <dimen name="loadingheight">175dp</dimen>
 </resources>

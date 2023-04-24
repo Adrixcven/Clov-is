@@ -23,8 +23,10 @@ import cat.copernic.clovis.R
 import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.Utils.Utilities.Companion.createNotification
 import cat.copernic.clovis.Utils.Utilities.Companion.createNotificationChannel
+import cat.copernic.clovis.data.dataAdmin
 import cat.copernic.clovis.data.dataArma
 import cat.copernic.clovis.databinding.FragmentAddArmaBinding
+import cat.copernic.clovis.datalist.AdminList
 import cat.copernic.clovis.datalist.ArmasList
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.installations.Utils
@@ -142,7 +144,12 @@ class addArma : Fragment() {
                     }
                 } catch (e: FileNotFoundException) {
                     e.printStackTrace()
-                    Toast.makeText(requireContext(), "File not found.", Toast.LENGTH_LONG).show()
+                    val context: Context = requireContext()
+                    val builder = AlertDialog.Builder(context)
+                    builder.setMessage("Archivo no encontrado")
+                    builder.setPositiveButton("Aceptar", null)
+                    val dialog = builder.create()
+                    dialog.show()
                 }
             } else {
                 Toast.makeText(requireContext(), "Image not found.", Toast.LENGTH_LONG).show()
@@ -219,10 +226,20 @@ class addArma : Fragment() {
                             imageResourceId = selectedImage,
                             id = arma.nombre
                         )
+                        ArmasList.armas.add(wallItem)
+                        if(AdminList.admin.isEmpty()){
+                        }else{
+                            val wallItemadmin = dataAdmin(
+                                nombre = arma.nombre,
+                                imageResourceId = selectedImage,
+                                id = arma.nombre,
+                                editar = R.drawable.edit,
+                                borrar = R.drawable.trash
+                            )
+                            AdminList.admin.add(wallItemadmin)
+                        }
                         Utilities.createNotificationChannel(channelName, channelID, requireContext())
                         Utilities.createNotification(requireContext(), channelID, notificationID)
-
-                        ArmasList.armas.add(wallItem)
                         view?.findNavController()?.navigate(R.id.action_addArma_to_seleccionarArma)
                     }
                         .addOnFailureListener{ //No s'ha afegit el departament...

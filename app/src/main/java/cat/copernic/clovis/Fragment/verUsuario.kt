@@ -11,6 +11,7 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.clovis.R
+import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
 import cat.copernic.clovis.databinding.FragmentVerUsuarioBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -112,6 +113,7 @@ class verUsuario : Fragment() {
                         binding.textoDeClase.text = it.get("clase").toString()
                     }else{
                         binding.textoDeClase.text = "Sin clase"
+
                     }
                 }
             }

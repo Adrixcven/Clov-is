@@ -43,10 +43,6 @@
             app:argType="string" />
         <action
             android:id="@+id/action_administradorArmas_self"
-            app:enterAnim="@anim/enter"
-            app:exitAnim="@anim/exit"
-            app:popEnterAnim="@anim/pop_enter"
-            app:popExitAnim="@anim/pop_exit"
             app:destination="@id/administradorArmas" />
     </fragment>
     <fragment

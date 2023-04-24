@@ -114,11 +114,15 @@ class AdministradorArmas : Fragment() {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
                     recycleAdmin()
+                    binding.loadingAdmin.visibility = View.INVISIBLE
+                    binding.recyclerAdmin.visibility = View.VISIBLE
                 }
             }
         }else {
             binding.recyclerAdmin.layoutManager = LinearLayoutManager(context)
             binding.recyclerAdmin.adapter = adminAdapter(AdminList.admin, ArmasList.armas, FavList.favoritos)
+            binding.loadingAdmin.visibility = View.INVISIBLE
+            binding.recyclerAdmin.visibility = View.VISIBLE
         }
     }
 

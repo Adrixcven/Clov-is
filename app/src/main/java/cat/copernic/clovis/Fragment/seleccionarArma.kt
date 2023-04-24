@@ -114,11 +114,15 @@ class SeleccionarArma : Fragment() {
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
                     recycleArmas()
+                    binding.loadingArmas.visibility = View.INVISIBLE
+                    binding.recyclerArmas.visibility = View.VISIBLE
                 }
             }
         }else {
             binding.recyclerArmas.layoutManager = LinearLayoutManager(context)
             binding.recyclerArmas.adapter = armasAdapter(ArmasList.armas)
+            binding.loadingArmas.visibility = View.INVISIBLE
+            binding.recyclerArmas.visibility = View.VISIBLE
         }
     }
 
