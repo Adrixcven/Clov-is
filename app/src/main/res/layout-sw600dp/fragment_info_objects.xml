@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/imgStar"
-                android:layout_width="@dimen/star"
-                android:layout_height="@dimen/star"
+                android:layout_width="@dimen/star_doble"
+                android:layout_height="@dimen/star_doble"
                 android:contentDescription="@string/estrella_favoritos"
                 android:src="@drawable/estrellaoff"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
             <ImageView
                 android:id="@+id/img_object"
                 android:layout_width="wrap_content"
-                android:layout_height="232dp"
+                android:layout_height="464dp"
                 android:contentDescription="@string/imagen_arma"
                 android:src="@drawable/ejemplolong"
                 android:visibility="invisible"
@@ -47,8 +47,8 @@
             <ImageView
                 android:id="@+id/img_perks"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
                 android:contentDescription="@string/imagen_perk"
                 android:src="@drawable/ejemploperksluz"
                 android:visibility="invisible"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:textSize="@dimen/size_title2"
+                android:textSize="@dimen/size_title2_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_object" />
@@ -75,7 +75,7 @@
                 android:layout_marginTop="15dp"
                 android:paddingLeft="@dimen/default_margin_for_description"
                 android:paddingRight="@dimen/default_margin_for_description"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nameObj" />
@@ -85,9 +85,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/cargador"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_descriptionObject" />
 
@@ -96,8 +96,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:textSize="@dimen/size_title3"
+                android:layout_marginTop="40dp"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toEndOf="@+id/txt_cargador"
                 app:layout_constraintTop_toBottomOf="@+id/txt_descriptionObject" />
 
@@ -105,9 +105,9 @@
                 android:id="@+id/txt_disparos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/disparos_por_minuto"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_cargador" />
 
@@ -115,9 +115,9 @@
                 android:id="@+id/txt_num_disparos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_num_cargador" />
 
@@ -125,9 +125,9 @@
                 android:id="@+id/txt_recoil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/recoil"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_airassist" />
 
@@ -135,9 +135,9 @@
                 android:id="@+id/txt_recoil_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_airassist_num" />
 
@@ -145,9 +145,9 @@
                 android:id="@+id/txt_impacto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/impacto"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_disparos" />
 
@@ -155,9 +155,9 @@
                 android:id="@+id/txt_impacto_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_num_disparos" />
 
@@ -165,9 +165,9 @@
                 android:id="@+id/txt_rango"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/rango"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_impacto" />
 
@@ -175,9 +175,9 @@
                 android:id="@+id/txt_rango_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_impacto_num" />
 
@@ -185,9 +185,9 @@
                 android:id="@+id/txt_stability"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/estabilidad"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_rango" />
 
@@ -195,9 +195,9 @@
                 android:id="@+id/txt_stability_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_rango_num" />
 
@@ -205,9 +205,9 @@
                 android:id="@+id/txt_reload"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/velocidad_de_recarga"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_stability" />
 
@@ -215,9 +215,9 @@
                 android:id="@+id/txt_reload_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_stability_num" />
 
@@ -225,9 +225,9 @@
                 android:id="@+id/txt_aim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/asistencia_de_apuntado"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_reload" />
 
@@ -235,9 +235,9 @@
                 android:id="@+id/txt_aim_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_reload_num" />
 
@@ -245,9 +245,9 @@
                 android:id="@+id/txt_inventario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/tama_o_de_inventario"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_aim" />
 
@@ -255,9 +255,9 @@
                 android:id="@+id/txt_inventario_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_aim_num" />
 
@@ -265,9 +265,9 @@
                 android:id="@+id/txt_zoom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/zoom"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_inventario" />
 
@@ -275,9 +275,9 @@
                 android:id="@+id/txt_zoom_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_inventario_num" />
 
@@ -285,9 +285,9 @@
                 android:id="@+id/txt_airassist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/ayuda_en_aire"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_zoom" />
 
@@ -295,9 +295,9 @@
                 android:id="@+id/txt_airassist_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="17dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_zoom_num" />
 
@@ -307,7 +307,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="@string/perks"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_recoil_num" />
@@ -318,7 +318,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="@string/lugar_de_obtenci_n"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_perks" />
@@ -327,9 +327,9 @@
                 android:id="@+id/info_where_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -338,8 +338,8 @@
             <ProgressBar
                 android:id="@+id/cargandoImg"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="175dp"
-                android:layout_height="155dp"
+                android:layout_width="350dp"
+                android:layout_height="310dp"
                 android:layout_marginTop="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -348,8 +348,8 @@
             <ProgressBar
                 android:id="@+id/cargandoPerks"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="125dp"
-                android:layout_height="90dp"
+                android:layout_width="250dp"
+                android:layout_height="180dp"
                 android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

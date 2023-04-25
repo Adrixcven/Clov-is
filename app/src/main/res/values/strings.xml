@@ -80,6 +80,10 @@
     <string name="imagen_favoritos">Imagen Favoritos</string>
     <string name="imagen_peque_a_del_arma">Imagen pequeña del arma</string>
     <string name="estrella_favoritos">Estrella Favoritos</string>
+    <string name="version_de_la_aplicacion">Version de la aplicación</string>
+    <string name="id_version">1.0</string>
+    <string name="correo_de_soporte">Correo de soporte:</string>
+    <string name="clovis_gmail_com">Clovis@gmail.com</string>
     <string-array name="class_options">
         <item>Selecciona Clase</item>
         <item>Cazador</item>

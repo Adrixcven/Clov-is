@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/imagen_arma"
-                android:textSize="@dimen/size_title2"
+                android:textSize="@dimen/size_title2_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_name_arma" />
@@ -38,16 +38,17 @@
             <ImageView
                 android:id="@+id/img_object"
                 android:layout_width="wrap_content"
-                android:layout_height="232dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
-                android:src="@drawable/ejemplolong"
+                android:src="@drawable/placeholder"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma"
-                app:srcCompat="@drawable/ejemplolong" />
+                app:srcCompat="@drawable/placeholder"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/img_de_arma_little"
@@ -55,23 +56,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/imagen_peque_a_del_arma"
-                android:textSize="@dimen/size_title2"
+                android:textSize="@dimen/size_title2_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_object" />
 
             <ImageView
                 android:id="@+id/img_object_little"
-                android:layout_width="212dp"
-                android:layout_height="124dp"
+                android:layout_width="424dp"
+                android:layout_height="248dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
-                android:src="@drawable/ejemplo"
+                android:src="@drawable/placeholder"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma_little"
-                app:srcCompat="@drawable/ejemplo"
+                app:srcCompat="@drawable/placeholder"
                 tools:ignore="ImageContrastCheck" />
 
             <ImageView
@@ -80,10 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/imagen_perk"
-                android:src="@drawable/ejemploperksluz"
+                android:src="@drawable/placeholder"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info_obj_perk"
                 app:srcCompat="@drawable/ejemploperksluz" />
@@ -93,16 +93,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nombre"
-                android:textSize="@dimen/size_title2"
+                android:textSize="@dimen/size_title2_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_name_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nameObj">
@@ -110,10 +110,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_nombre_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="text"
                     android:maxLength="100"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,15 +123,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/description"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_object_little" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_desc_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="122dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,13 +141,12 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_descripcion_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:background="@color/grey"
+                    android:layout_height="244dp"
                     android:gravity="top|start"
                     android:inputType="text"
                     android:padding="16dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,17 +154,17 @@
                 android:id="@+id/txt_cargador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/cargador"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_desc_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_cargador_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -175,10 +175,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_ammo_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -187,16 +187,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/disparos_por_minuto"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_cargador_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_dps_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -207,10 +207,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_disparos_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,14 +222,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/impacto"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_dps_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_impacto_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -240,10 +240,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_impact_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -254,14 +254,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/rango"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_impacto_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_rango_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -272,10 +272,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_distancia_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -286,14 +286,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/estabilidad"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_rango_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_estabilidad_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -304,10 +304,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_stability_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -318,14 +318,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/velocidad_de_recarga"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_estabilidad_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_recarga_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -336,10 +336,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_reload_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -350,14 +350,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/asistencia_de_apuntado"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_recarga_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_apuntado_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -368,10 +368,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_aimassist_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -382,14 +382,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/tama_o_de_inventario"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_apuntado_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_inv_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -400,10 +400,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_magazine_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -415,14 +415,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/zoom"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_inv_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_zoom_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -433,10 +433,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_zoomm_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number|text"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -448,15 +448,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/ayuda_en_aire"
-                android:textColor="#616161"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_zoom_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_aire_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -467,10 +466,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_airassist_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -481,14 +480,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:text="@string/recoil"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_aire_arma" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_recoil_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp"
@@ -499,10 +498,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_retroceso_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="2"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -512,10 +511,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="@string/perks"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editar_recoil_arma" />
+
 
             <TextView
                 android:id="@+id/info_where"
@@ -523,15 +523,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/lugar_de_obtenci_n"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_perks" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_obtencion_arma"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -540,22 +540,22 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_find_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="text"
                     android:maxLength="100"
-                    android:textSize="@dimen/size_title3"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
                 android:id="@+id/Guardar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/botondoble"
                 android:layout_marginStart="105dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="105dp"
                 android:text="@string/guardar"
+                android:textSize="@dimen/size_title6_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/editar_obtencion_arma"
                 app:layout_constraintTop_toBottomOf="@+id/editar_obtencion_arma" />
@@ -563,8 +563,8 @@
             <ProgressBar
                 android:id="@+id/cargaImg"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="128dp"
-                android:layout_height="114dp"
+                android:layout_width="@dimen/loadingheight_doble"
+                android:layout_height="@dimen/loadingwidth_doble"
                 android:layout_marginTop="84dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -573,8 +573,8 @@
             <ProgressBar
                 android:id="@+id/cargaImgLittle"
                 style="?android:attr/progressBarStyle"
-                android:layout_width="97dp"
-                android:layout_height="91dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="35dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

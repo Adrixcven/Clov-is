@@ -11,12 +11,12 @@
     <Switch
         android:id="@+id/switch_notificaciones"
         style="@style/Switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
         android:layout_marginTop="100dp"
         android:minHeight="48dp"
         android:text="@string/recibir_notificaciones"
-        android:textSize="@dimen/size_title2"
+        android:textSize="@dimen/size_title2_doble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:minWidth="185dp"
         android:text="@string/version_de_la_aplicacion"
         android:textColor="@color/black"
-        android:textSize="@dimen/size_title3"
+        android:textSize="@dimen/size_title3_doble"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/idversio"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,7 +44,7 @@
         android:layout_marginBottom="100dp"
         android:text="@string/id_version"
         android:textColor="@color/black"
-        android:textSize="@dimen/size_title3"
+        android:textSize="@dimen/size_title3_doble"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -56,7 +56,7 @@
         android:minWidth="185dp"
         android:text="@string/correo_de_soporte"
         android:textColor="@color/black"
-        android:textSize="@dimen/size_title3"
+        android:textSize="@dimen/size_title3_doble"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch_notificaciones" />
 
@@ -67,7 +67,7 @@
         android:layout_marginTop="70dp"
         android:text="@string/clovis_gmail_com"
         android:textColor="@color/black"
-        android:textSize="@dimen/size_title3"
+        android:textSize="@dimen/size_title3_doble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch_notificaciones" />
 

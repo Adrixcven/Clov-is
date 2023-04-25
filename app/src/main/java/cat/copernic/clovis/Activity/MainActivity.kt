@@ -1,11 +1,9 @@
 package cat.copernic.clovis.Activity
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -33,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
 
-        setupActionBarWithNavController(navController)
         //menú lateral
         appBarConfiguration = AppBarConfiguration(
             setOf(cat.copernic.clovis.R.id.seleccionarArma, cat.copernic.clovis.R.id.verUsuario, cat.copernic.clovis.R.id.ajustes, cat.copernic.clovis.R.id.administradorArmas, cat.copernic.clovis.R.id.addArma, cat.copernic.clovis.R.id.favoritos),

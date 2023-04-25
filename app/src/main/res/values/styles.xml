@@ -7,6 +7,13 @@
         <item name="android:layout_height">@dimen/TxtInput_height</item>
         <item name="background">@color/grey</item>
     </style>
+    <style name="TextInputdoble" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/darkgrey</item>
+        <item name="android:layout_width">@dimen/TxtInput_width_doble</item>
+        <item name="android:layout_height">@dimen/TxtInput_height_doble</item>
+        <item name="background">@color/grey</item>
+        <item name="boxStrokeWidth">3dp</item>
+    </style>
     <!--Boton-->
     <style name="boton" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/verdelogo</item>
@@ -14,6 +21,13 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_width">@dimen/boton_width</item>
         <item name="android:layout_height">@dimen/boton_height</item>
+    </style>
+    <style name="botondoble" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/verdelogo</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">@dimen/boton_width_doble</item>
+        <item name="android:layout_height">@dimen/boton_height_doble</item>
     </style>
     <!--Titulos, TextViews-->
     <style name="Titulo" parent="Widget.MaterialComponents.TextView">
@@ -33,6 +47,24 @@
     </style>
     <style name="TextView_por_defecto" parent="Widget.MaterialComponents.TextView">
         <item name="android:textSize">@dimen/size_title6</item>
+    </style>
+    <style name="Titulodoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title_doble</item>
+    </style>
+    <style name="TextView25dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title2_doble</item>
+    </style>
+    <style name="TextView20dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title3_doble</item>
+    </style>
+    <style name="TextView18dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title4_doble</item>
+    </style>
+    <style name="TextView16dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title5_doble</item>
+    </style>
+    <style name="TextView_por_defectodoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title6_doble</item>
     </style>
     <style name="TextView_colorOnly" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/black</item>

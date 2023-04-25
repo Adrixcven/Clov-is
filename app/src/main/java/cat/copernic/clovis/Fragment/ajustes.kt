@@ -1,13 +1,12 @@
 package cat.copernic.clovis.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import cat.copernic.clovis.R
+import android.widget.CompoundButton
+import androidx.fragment.app.Fragment
 import cat.copernic.clovis.databinding.FragmentAjustesBinding
-import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +30,12 @@ class ajustes : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        binding.switchNotificaciones.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            // Aquí puedes realizar cualquier acción que necesites al cambiar el estado del switch
+            if (isChecked) {
+            } else {
+            }
+        })
     }
 
     override fun onCreateView(

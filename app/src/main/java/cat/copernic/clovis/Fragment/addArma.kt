@@ -3,10 +3,8 @@ package cat.copernic.clovis.Fragment
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -21,15 +19,12 @@ import androidx.navigation.findNavController
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
 import cat.copernic.clovis.Utils.Utilities
-import cat.copernic.clovis.Utils.Utilities.Companion.createNotification
-import cat.copernic.clovis.Utils.Utilities.Companion.createNotificationChannel
 import cat.copernic.clovis.data.dataAdmin
 import cat.copernic.clovis.data.dataArma
 import cat.copernic.clovis.databinding.FragmentAddArmaBinding
 import cat.copernic.clovis.datalist.AdminList
 import cat.copernic.clovis.datalist.ArmasList
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.installations.Utils
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
@@ -44,7 +39,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [addArma.newInstance] factory method to
  * create an instance of this fragment.
  */
-class addArma : Fragment() {
+class addArma : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -276,6 +271,7 @@ class addArma : Fragment() {
 
         return Arma(nombre, descripcion, null, cargador, disparos, impacto, rango, estabilidad, recarga, aim, magazine, zoom, aire, recoil,null, donde)
     }
+
 
 
 

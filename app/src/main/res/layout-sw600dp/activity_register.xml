@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/icon"
-                android:layout_width="@dimen/logo_width_grande"
-                android:layout_height="@dimen/logo_height_grande"
+                android:layout_width="@dimen/logo_width_grande_doble"
+                android:layout_height="@dimen/logo_height_grande_doble"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/login"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/registrate"
-                android:textSize="@dimen/size_title2"
+                android:textSize="@dimen/size_title3_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/icon" />
@@ -48,15 +48,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/nombre_de_usuario"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title4_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_register" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputNombreRegister"
+                style="@style/TextInputdoble"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="31dp"
@@ -67,8 +67,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaNombreRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="@string/nombre_de_usuario"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -79,15 +80,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/correo_electronico"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title4_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputNombreRegister" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputEmailRegister"
+                style="@style/TextInputdoble"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="31dp"
@@ -98,8 +99,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaEmailRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="@string/correo_electronico"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -110,15 +112,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/contra"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title4_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputEmailRegister" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputPasswordRegister"
+                style="@style/TextInputdoble"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="31dp"
@@ -126,14 +128,15 @@
                 app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_passwordregister">
+                app:layout_constraintTop_toBottomOf="@+id/txt_passwordregister">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaPasswordRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="@string/contra"
                     android:inputType="textPassword"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -144,15 +147,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/repite_contrase_a"
-                android:textSize="@dimen/size_title3"
+                android:textSize="@dimen/size_title4_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputPasswordRegister" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputRepPasswordRegister"
+                style="@style/TextInputdoble"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="31dp"
@@ -165,9 +168,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/TextInputCajaEepPasswordRegister"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="@string/contra"
                     android:inputType="textPassword"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -176,33 +180,32 @@
                 android:id="@+id/check_term_cond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/acepto_los_terminos_de_usuario_y_privacidad"
-                android:textSize="@dimen/size_title6"
+                android:textSize="@dimen/size_title6_doble"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textInputRepPasswordRegister"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputRepPasswordRegister" />
 
             <Button
                 android:id="@+id/btn_crearCuenta"
-                style="@style/boton"
-                android:layout_width="@dimen/boton_width"
-                android:layout_height="@dimen/boton_height"
+                style="@style/botondoble"
                 android:layout_marginTop="25dp"
                 android:text="@string/crear_cuenta"
+                android:textSize="@dimen/size_title6_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/check_term_cond" />
 
             <TextView
                 android:id="@+id/txt_tienesCuenta"
-                android:layout_width="160dp"
-                android:layout_height="63dp"
+                android:layout_width="320dp"
+                android:layout_height="126dp"
                 android:layout_marginTop="22dp"
                 android:gravity="center|center_horizontal"
                 android:text="@string/ya_tienes_cuenta_inicia_sesion"
                 android:textAlignment="center"
-                android:textSize="@dimen/size_title4"
+                android:textSize="@dimen/size_title5_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_crearCuenta"

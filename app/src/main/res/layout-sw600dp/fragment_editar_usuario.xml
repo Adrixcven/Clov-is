@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgrey"
+    tools:context=".Fragment.editar_usuario">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin">
+
+            <TextView
+                android:id="@+id/cuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cuenta"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title2_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/fotoperfil"
+                android:layout_width="228dp"
+                android:layout_height="216dp"
+                android:contentDescription="@string/foto_de_perfil"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cuenta"
+                app:srcCompat="@drawable/foto_perfil"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/nombre"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title3_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fotoperfil" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInput_Nombre"
+                style="@style/TextInputdoble"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nombre">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/size_title5_doble"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/apellidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop_texts"
+                android:text="@string/id"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title3_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_Nombre" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInput_Id"
+                style="@style/TextInputdoble"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/apellidos">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/size_title5_doble"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/correo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop_texts"
+                android:text="@string/correo_electr_nico"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title3_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_Id" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInput_Correo"
+                style="@style/TextInputdoble"
+                android:layout_width="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/correo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/correo_electronico"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/size_title5_doble"
+
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/Clase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/que_clase_eres"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title3_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_Correo"
+                tools:ignore="TextContrastCheck" />
+
+
+            <Spinner
+                android:id="@+id/spinner_clases"
+                android:layout_width="@dimen/TxtInput_width_doble"
+                android:layout_height="@dimen/TxtInput_height_doble"
+                android:layout_marginTop="18dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/clases_de_personaje"
+                android:entries="@array/class_options"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Clase" />
+
+            <TextView
+                android:id="@+id/InformacionPropia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/descripci_n_personal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_title3_doble"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_clases" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtInput_informacion"
+                android:layout_width="0dp"
+                android:layout_height="216dp"
+                android:gravity="start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/InformacionPropia">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/informacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:gravity="start"
+                    android:maxLength="150"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/guardar_perfil"
+                style="@style/botondoble"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="60dp"
+                android:text="@string/guardar_perfil"
+                android:textSize="@dimen/size_title6_doble"
+                app:cornerRadius="@dimen/buttons_corners"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtInput_informacion" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

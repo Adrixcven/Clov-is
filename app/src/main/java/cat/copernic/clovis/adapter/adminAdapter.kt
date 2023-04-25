@@ -28,6 +28,7 @@ import java.io.File
 
 class adminAdapter (private val Adminlist:List<dataAdmin>, private val ArmasList:List<dataArma>, private val FavList:List<dataFav>) :
     RecyclerView.Adapter<adminAdapter.adminholder>(){
+
         inner class adminholder(val binding: ItemSeleccionarAdminBinding): RecyclerView.ViewHolder(binding.root)
         private var binding: ItemSeleccionarAdminBinding? = null
         private var bd = FirebaseFirestore.getInstance()
@@ -35,6 +36,7 @@ class adminAdapter (private val Adminlist:List<dataAdmin>, private val ArmasList
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): adminAdapter.adminholder {
             val binding= ItemSeleccionarAdminBinding.inflate(LayoutInflater.from(parent.context),parent, false)
             return adminholder(binding)
+
         }
 
 
