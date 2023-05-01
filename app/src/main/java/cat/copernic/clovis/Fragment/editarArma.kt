@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
 import cat.copernic.clovis.data.dataAdmin
@@ -75,6 +76,7 @@ class editarArma : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Editar Arma")
         id = args.id
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
@@ -275,7 +277,7 @@ class editarArma : Fragment() {
                 binding.imgObjectLittle.setImageBitmap(bitmap)
             }.await()
             binding.cargaImgLittle.visibility=View.INVISIBLE
-            binding.imgObject.visibility=View.VISIBLE
+            binding.imgObjectLittle.visibility=View.VISIBLE
         }
     }
     fun llegirDades(): Arma {

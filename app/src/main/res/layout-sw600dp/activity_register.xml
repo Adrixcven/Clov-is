@@ -176,6 +176,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/politicas_de_uso"
+                android:textColor="@color/teal_700"
+                android:textSize="@dimen/size_title4_doble"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputRepPasswordRegister" />
             <CheckBox
                 android:id="@+id/check_term_cond"
                 android:layout_width="wrap_content"
@@ -185,7 +196,7 @@
                 android:textSize="@dimen/size_title6_doble"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputRepPasswordRegister" />
+                app:layout_constraintTop_toBottomOf="@+id/policy" />
 
             <Button
                 android:id="@+id/btn_crearCuenta"

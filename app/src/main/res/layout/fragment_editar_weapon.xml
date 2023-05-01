@@ -131,7 +131,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/editar_desc_arma"
                 android:layout_width="0dp"
-                android:layout_height="122dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -140,8 +140,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editar_descripcion_arma"
                     android:layout_width="match_parent"
-                    android:layout_height="122dp"
-                    android:background="@color/grey"
+                    android:layout_height="match_parent"
                     android:gravity="top|start"
                     android:inputType="text"
                     android:padding="16dp"
@@ -550,6 +549,7 @@
 
             <Button
                 android:id="@+id/Guardar"
+                style="@style/boton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="105dp"

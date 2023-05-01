@@ -34,7 +34,7 @@
                         android:layout_marginStart="75dp"
                         android:layout_marginTop="48dp"
                         android:contentDescription="@string/foto_de_perfil"
-                        android:src="@drawable/placeholder"
+                        android:src="@drawable/placehold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ImageContrastCheck" />
@@ -114,7 +114,7 @@
                 android:layout_height="123dp"
                 android:layout_marginTop="30dp"
                 android:contentDescription="@string/imagen_clase"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/placehold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/texto_clase"

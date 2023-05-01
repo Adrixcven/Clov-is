@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.adminAdapter
 import cat.copernic.clovis.data.dataAdmin
@@ -58,6 +59,7 @@ class AdministradorArmas : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Administrador")
         initRecyclerView(view)
     }
     override fun onResume() {

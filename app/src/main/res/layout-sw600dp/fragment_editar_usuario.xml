@@ -167,8 +167,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInput_informacion"
+                style="@style/TextInputdoble"
                 android:layout_width="0dp"
-                android:layout_height="216dp"
                 android:gravity="start"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,9 +177,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/informacion"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="match_parent"
                     android:gravity="start"
                     android:maxLength="150"
+                    android:textSize="@dimen/size_title5_doble"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 

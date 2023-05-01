@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.databinding.FragmentAjustesBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,16 +27,11 @@ class ajustes : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Ajustes")
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        binding.switchNotificaciones.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            // Aquí puedes realizar cualquier acción que necesites al cambiar el estado del switch
-            if (isChecked) {
-            } else {
-            }
-        })
     }
 
     override fun onCreateView(

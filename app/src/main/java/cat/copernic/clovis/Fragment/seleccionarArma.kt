@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.armasAdapter
 import cat.copernic.clovis.data.dataArma
@@ -15,6 +16,7 @@ import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
 import cat.copernic.clovis.datalist.ArmasList
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import hotchemi.android.rate.AppRate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -58,6 +60,9 @@ class SeleccionarArma : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView(view)
+        (activity as MainActivity?)!!.updateActionBarTitle("Seleccionar Arma")
+        AppRate.with(requireActivity()).setInstallDays(0).setLaunchTimes(2).setRemindInterval(1).monitor()
+        AppRate.showRateDialogIfMeetsConditions(requireActivity())
 
     }
     override fun onResume() {

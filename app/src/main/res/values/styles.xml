@@ -2,10 +2,11 @@
 <resources>
     <!--TextInputLayout-->
     <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/darkgrey</item>
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
         <item name="android:layout_width">@dimen/TxtInput_width</item>
         <item name="android:layout_height">@dimen/TxtInput_height</item>
         <item name="background">@color/grey</item>
+        <item name="android:textColorHint">@color/lightggdark</item>
     </style>
     <style name="TextInputdoble" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/darkgrey</item>
@@ -74,6 +75,8 @@
         <item name="android:layout_width">@dimen/Spinner_width</item>
         <item name="android:layout_height">@dimen/Spinner_height</item>
         <item name="android:padding">10sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="boxStrokeWidth">2dp</item>
     </style>
     <!--Switch-->
     <style name="Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
@@ -91,7 +94,11 @@
         <item name="android:buttonTint">@color/darkgrey</item>
     </style>
 
-    <style name="ConstraintLayoutFragment">
-        <item name="android:background">@color/darkgrey</item>
+    <style name="MenuStyle">
+        <item name="android:textSize">40dp</item>
+        <item name="android:padding">30dp</item>
+    </style>
+    <style name="Toolbar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/size_title4</item>
     </style>
 </resources>

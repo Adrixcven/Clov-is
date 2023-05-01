@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
@@ -62,6 +63,7 @@ class verUsuario : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Usuario")
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 ponerdatos()

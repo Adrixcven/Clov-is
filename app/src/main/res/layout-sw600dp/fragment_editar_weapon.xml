@@ -41,13 +41,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/placehold"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma"
-                app:srcCompat="@drawable/placeholder"
+                app:srcCompat="@drawable/placehold"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
@@ -67,12 +67,12 @@
                 android:layout_height="248dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_arma"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/placehold"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_de_arma_little"
-                app:srcCompat="@drawable/placeholder"
+                app:srcCompat="@drawable/placehold"
                 tools:ignore="ImageContrastCheck" />
 
             <ImageView
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:contentDescription="@string/imagen_perk"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/placehold"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

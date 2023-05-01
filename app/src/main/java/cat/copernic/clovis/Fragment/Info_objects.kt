@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.databinding.FragmentInfoObjectsBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -61,6 +62,7 @@ class Info_objects : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Info Arma")
         id = args.id
         auth = Firebase.auth
         var actual = auth.currentUser

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clovis</string>
+    <string name="app_name">Clov-is</string>
     <string name="bienvenido_usuario">Benvingut Usuario</string>
     <string name="email">Email</string>
     <string name="correo_electronico">Correu electronic</string>
@@ -82,6 +82,16 @@
     <string name="ajustes">Paràmetres</string>
     <string name="version_de_la_aplicacion">Versió de la aplicació</string>
     <string name="id_version">1.0</string>
-    <string name="correo_de_soporte">Correu de suport:</string>
-    <string name="clovis_gmail_com">Clovis@gmail.com</string>
+    <string name="correo_de_soporte">Correu de suport: Clovis@gmail.com</string>
+    <string name="politicas_de_uso">Polítiques d\'ús</string>
+    <string name="policy">Per a utilitzar aquesta aplicació, es requereix l\'accés als següents permisos:\n\n"
+        "- Cambra: Necessària per a prendre fotos.\n\n"
+        "- Galeria: Necessària per a accedir a les imatges guardades en el dispositiu.\n\n"
+        "- Connexió a internet: Necessària per a accedir als continguts i/o funcionalitats en línia.\n\n"
+        "En utilitzar aquesta aplicació, accepta les polítiques d\'ús.</string>
+    <string name="armas_favoritas">Armes Preferides</string>
+    <string name="boton_editar">"Botó editar "</string>
+    <string name="boton_borrar">Botó esborrar</string>
+    <string name="puntos_suspensivos">...</string>
+    <string name="imagearma">imatge arma</string>
 </resources>

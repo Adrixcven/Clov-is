@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Clovis</string>
+    <string name="app_name">Clov-is</string>
     <string name="bienvenido_usuario">Welcome User</string>
     <string name="email">E-mail</string>
     <string name="correo_electronico">E-mail Address</string>
@@ -82,6 +82,16 @@
     <string name="estrella_favoritos">Favourite Star</string>
     <string name="version_de_la_aplicacion">Application Version</string>
     <string name="id_version">1.0</string>
-    <string name="correo_de_soporte">Support E-mail:</string>
-    <string name="clovis_gmail_com">Clovis@gmail.com</string>
+    <string name="correo_de_soporte">Support E-mail: Clovis@gmail.com</string>
+    <string name="politicas_de_uso">Use policies</string>
+    <string name="policy">To use this app, access to the following permissions is required:\n\n"
+        "- Camera: Needed to take photos.\n\n"
+        "- Gallery: Necessary to access the images saved on the device.\n\n"
+        "- Internet connection: Necessary to access the contents and/or online functionalities.\n\n"
+        "By using this app, you agree to the terms of use.</string>
+    <string name="armas_favoritas">Favourite Weapons</string>
+    <string name="boton_editar">Edit button</string>
+    <string name="boton_borrar">Delete button</string>
+    <string name="puntos_suspensivos">...</string>
+    <string name="imagearma">weapon image</string>
 </resources>

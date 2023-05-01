@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clovis</string>
+    <string name="app_name">Clov-is</string>
     <string name="bienvenido_usuario">Bienvenido Usuario</string>
     <string name="email">Email</string>
     <string name="correo_electronico">Correo electronico</string>
@@ -82,8 +82,19 @@
     <string name="estrella_favoritos">Estrella Favoritos</string>
     <string name="version_de_la_aplicacion">Version de la aplicación</string>
     <string name="id_version">1.0</string>
-    <string name="correo_de_soporte">Correo de soporte:</string>
-    <string name="clovis_gmail_com">Clovis@gmail.com</string>
+    <string name="correo_de_soporte">Correo de soporte: Clovis@gmail.com</string>
+    <string name="politicas_de_uso">Políticas de uso</string>
+    <string name="policy">Para utilizar esta aplicación, se requiere el acceso a los siguientes permisos:\n\n"
+    "- Cámara: Necesaria para tomar fotos .\n\n"
+    "- Galería: Necesaria para acceder a las imágenes guardadas en el dispositivo.\n\n"
+    "- Conexión a internet: Necesaria para acceder a los contenidos y/o funcionalidades en línea.\n\n"
+    "Al utilizar esta aplicación, acepta las políticas de uso.</string>
+    <string name="armas_favoritas">Armas Favoritas</string>
+    <string name="boton_editar">boton editar</string>
+    <string name="boton_borrar">boton borrar</string>
+    <string name="puntos_suspensivos">...</string>
+    <string name="imagearma">imagen arma</string>
+
     <string-array name="class_options">
         <item>Selecciona Clase</item>
         <item>Cazador</item>

@@ -1,19 +1,16 @@
 package cat.copernic.clovis.Activity
 
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import cat.copernic.clovis.Models.Usuario
-import cat.copernic.clovis.R
-
 import cat.copernic.clovis.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -21,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+
 
 class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -38,6 +36,9 @@ class Register : AppCompatActivity() {
         setContentView(view)
 
         auth= Firebase.auth
+        binding.policy.setOnClickListener {
+            openWebPage()
+        }
 
         binding.btnCrearCuenta.setOnClickListener{
             var correo = binding.TextInputCajaEmailRegister.text.toString()
@@ -46,7 +47,7 @@ class Register : AppCompatActivity() {
 
             val builder = AlertDialog.Builder(this)
 
-            if(contrasena.equals(repContrasena)&&campoVacio(correo,contrasena,repContrasena)&&contrasena.length >= 6){
+            if(contrasena.equals(repContrasena)&&campoVacio(correo,contrasena,repContrasena)&&contrasena.length >= 6&&binding.checkTermCond.isChecked()){
                 registrar(correo,contrasena)
                 startActivity(Intent(this, Login::class.java))
                 finish()
@@ -77,6 +78,12 @@ class Register : AppCompatActivity() {
             }else if(contrasena.length < 6||repContrasena.length < 6){
                 builder.setTitle("Error")
                 builder.setMessage("La contraseña es demasiado pequeña. Tiene que ser de minimo 6 digitos")
+                builder.setPositiveButton("Aceptar", null)
+                val dialog = builder.create()
+                dialog.show()
+            }else{
+                builder.setTitle("Error")
+                builder.setMessage("Has aceptado las politicas de uso ")
                 builder.setPositiveButton("Aceptar", null)
                 val dialog = builder.create()
                 dialog.show()
@@ -157,7 +164,7 @@ class Register : AppCompatActivity() {
                                     }
                                 }
 
-                                val drawable = ContextCompat.getDrawable(this, R.drawable.foto_perfil)
+                                val drawable = ContextCompat.getDrawable(this, cat.copernic.clovis.R.drawable.foto_perfil)
 
                                 val file = File.createTempFile("tempImage", "png", this.cacheDir)
                                 file.outputStream().use { outputStream ->
@@ -197,6 +204,10 @@ class Register : AppCompatActivity() {
         //Afegim els treballadors introduïts per l'usuari a l'atribut treballadors
 
         return Usuario("", id, Correo, "", false, "", null)
+    }
+    fun openWebPage() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.freeprivacypolicy.com/live/567abb4e-18b3-42d3-9b4f-d5ea62d3c21d"))
+        startActivity(intent)
     }
 
 

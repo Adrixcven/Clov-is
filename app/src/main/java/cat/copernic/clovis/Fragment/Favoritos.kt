@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.armasAdapter
 import cat.copernic.clovis.adapter.favAdapter
@@ -64,6 +65,7 @@ class Favoritos : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Favoritos")
         initRecyclerView(view)
     }
     private suspend fun recycleFav() {

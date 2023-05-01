@@ -33,6 +33,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
+            android:textSize="@dimen/size_title5_doble"
             app:menu="@menu/main_menu_admin" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

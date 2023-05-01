@@ -42,12 +42,12 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgStar"
-                app:srcCompat="@drawable/placeholder" />
+                app:srcCompat="@drawable/placehold" />
 
             <ImageView
                 android:id="@+id/img_perks"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/imagen_perk"
                 android:src="@drawable/ejemploperksluz"

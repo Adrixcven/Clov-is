@@ -20,6 +20,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import cat.copernic.clovis.Activity.MainActivity
 import cat.copernic.clovis.Models.Usuario
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
 import cat.copernic.clovis.datalist.AdminList.Companion.admin
@@ -77,6 +78,7 @@ class editar_usuario : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity?)!!.updateActionBarTitle("Editar usuario")
         var nom = args.id
         var selectedOption = ""
         var admina = MutableLiveData<Boolean>(false)

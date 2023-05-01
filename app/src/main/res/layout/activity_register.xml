@@ -132,7 +132,7 @@
                     android:id="@+id/TextInputCajaPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/contra"
+                    android:hint="@string/contrase_a"
                     android:inputType="textPassword"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
@@ -172,23 +172,38 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <TextView
+                android:id="@+id/policy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:height="40dp"
+                android:text="@string/politicas_de_uso"
+                android:textColor="@color/teal_700"
+                android:textSize="@dimen/size_title4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputRepPasswordRegister" />
+
             <CheckBox
                 android:id="@+id/check_term_cond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="30dp"
                 android:text="@string/acepto_los_terminos_de_usuario_y_privacidad"
                 android:textSize="@dimen/size_title6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textInputRepPasswordRegister"
-                app:layout_constraintTop_toBottomOf="@+id/textInputRepPasswordRegister" />
+                app:layout_constraintTop_toBottomOf="@+id/policy" />
 
             <Button
                 android:id="@+id/btn_crearCuenta"
                 style="@style/boton"
-                android:layout_width="@dimen/boton_width"
-                android:layout_height="@dimen/boton_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:width="@dimen/boton_width"
+                android:height="@dimen/boton_height"
                 android:text="@string/crear_cuenta"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -196,9 +211,10 @@
 
             <TextView
                 android:id="@+id/txt_tienesCuenta"
-                android:layout_width="160dp"
-                android:layout_height="63dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
+                android:width="160dp"
                 android:gravity="center|center_horizontal"
                 android:text="@string/ya_tienes_cuenta_inicia_sesion"
                 android:textAlignment="center"
