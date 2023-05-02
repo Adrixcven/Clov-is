@@ -52,22 +52,42 @@ class Info_objects : Fragment() {
         }
     }
 
+    /**
+    * Crea y devuelve la vista que representa el diseño del fragmento
+    * @param inflater Objeto utilizado para inflar cualquier vista en el fragmento.
+    * @param container El contenedor padre en el cual se infla la vista.
+    * @param savedInstanceState Bundle que contiene los datos de estado previamente guardados del fragmento.
+    * @return la vista que representa el diseño del fragmento.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Inflar el diseño del fragmento usando el objeto LayoutInflater proporcionado y el contenedor padre especificado, pero no se adjunta a la raíz del contenedor todavía.
         binding = FragmentInfoObjectsBinding.inflate(inflater, container, false)
+        // Devuelve la raíz de la vista inflada para que se pueda mostrar en la pantalla.
         return binding.root
     }
+
+    /**
+    * Esta función es llamada cuando se crea la vista del fragmento "Info Arma"
+    * @param view La vista raíz del fragmento
+    * @param savedInstanceState El estado previamente guardado de la instancia del fragmento
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Actualizar el título de la ActionBar en la actividad principal
         (activity as MainActivity?)!!.updateActionBarTitle("Info Arma")
+        // Obtener el id del arma seleccionada de los argumentos
         id = args.id
+        // Obtener la instancia de autenticación de Firebase
         auth = Firebase.auth
         var actual = auth.currentUser
+        // Obtener la instancia de Firestore de Firebase
         val db = FirebaseFirestore.getInstance()
+        // Obtener la referencia de la subcolección "Favoritos" del usuario actual
         val subcollectionRef = db.collection("Users").document(actual!!.email.toString()).collection("Favoritos")
+        // Comprobar si el arma actual está en la subcolección "Favoritos" del usuario actual
         subcollectionRef.document(id).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val document = task.result
@@ -76,12 +96,14 @@ class Info_objects : Fragment() {
                     }
                 }
             }
+        // Lanzar una nueva corutina para obtener los datos y las imágenes del arma actual
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 ponerdatos(id)
                 ponerimagenes(id)
             }
         }
+        // Configurar el clic en la estrella para añadir o eliminar el arma actual de la subcolección "Favoritos"
         binding.imgStar.setOnClickListener {
             subcollectionRef.document(id).get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -95,9 +117,15 @@ class Info_objects : Fragment() {
             }
         }
     }
+    /**
+    * Método que se encarga de poner los datos de un objeto de la colección "Armas" en la interfaz de usuario.
+    * @param id el identificador del documento en la colección "Armas" que contiene los datos del objeto.
+     */
     private suspend fun ponerdatos(id: String) {
         lifecycleScope.launch {
+            // Obtener el documento con el identificador id de la colección "Armas"
             bd.collection("Armas").document(id).get().addOnSuccessListener {
+                // Asignar los valores de los campos del documento a los componentes de la interfaz de usuario
                 binding.txtNameObj.setText(it.get("Nombre").toString())
                 binding.txtDescriptionObject.setText(it.get("Descripcion").toString())
                 binding.txtNumCargador.setText(it.get("Cargador").toString())
@@ -112,16 +140,24 @@ class Info_objects : Fragment() {
                 binding.txtAirassistNum.setText(it.get("Asistencia en aire").toString())
                 binding.txtRecoilNum.setText(it.get("Retroceso").toString())
                 binding.infoWhereNum.setText(it.get("Ubicación").toString())
-            }.await()
+            }.await()// Esperar a que la operación de obtener el documento se complete
         }
     }
+    /**
+     * Descarga y muestra las imágenes de arma y perks en la vista correspondiente.
+     *
+     * @param id El ID del arma para el que se descargan las imágenes.
+     */
     private suspend fun ponerimagenes(id:String){
         lifecycleScope.launch {
-            val storageRefPerks =
-                FirebaseStorage.getInstance().reference.child("image/Perks/$id" + "perk.jpeg")
+            // Referencia al archivo de imagen del arma
             val storageRef =
                 FirebaseStorage.getInstance().reference.child("image/Armas/$id" + "Image.jpeg")
+            // Referencia al archivo de imagen de los perks del arma
+            val storageRefPerks =
+                FirebaseStorage.getInstance().reference.child("image/Perks/$id" + "perk.jpeg")
 
+            // Descarga y muestra la imagen del arma
             var localfile = File.createTempFile("tempImage", "jpeg")
             storageRef.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
@@ -129,6 +165,8 @@ class Info_objects : Fragment() {
             }.await()
             binding.cargandoImg.visibility=View.INVISIBLE
             binding.imgObject.visibility=View.VISIBLE
+
+            // Descarga y muestra la imagen de los perks del arma
             storageRefPerks.getFile(localfile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                 binding.imgPerks.setImageBitmap(bitmap)
@@ -137,20 +175,33 @@ class Info_objects : Fragment() {
             binding.imgPerks.visibility=View.VISIBLE
         }
     }
+    /**
+    * Agrega un objeto a la lista de favoritos del usuario actual.
+    * @param id el ID del objeto a agregar.
+     */
     fun favoritosadd(id: String){
         auth = Firebase.auth
         var actual = auth.currentUser
+        // Agregar un documento con el ID y el nombre del objeto a la colección de favoritos del usuario actual
         bd.collection("Users").document(actual!!.email.toString()).collection("Favoritos").document(id).set(
             hashMapOf(
                 "Nombre" to binding.txtNameObj.text.toString()
             )
         )
+        // Cambiar la imagen de la estrella a "encendida"
         binding.imgStar.setImageResource(R.drawable.estrellaon)
     }
+    /**
+
+    * Elimina el arma con el ID especificado de la colección "Favoritos" del usuario actual.
+    * @param id el ID del arma a eliminar de los favoritos del usuario
+     */
     fun favoritosdelete (id:String){
         auth = Firebase.auth
         var actual = auth.currentUser
+        // Elimina un documento con el id de la subcoleccion de favoritos del usuario actual
         bd.collection("Users").document(actual!!.email.toString()).collection("Favoritos").document(id).delete()
+        // Cambiar la imagen de la estrella a "apagada"
         binding.imgStar.setImageResource(R.drawable.estrellaoff)
     }
 

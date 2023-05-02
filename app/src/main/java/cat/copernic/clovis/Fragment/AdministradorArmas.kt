@@ -57,22 +57,43 @@ class AdministradorArmas : Fragment() {
         binding = FragmentAdministradorArmasBinding.inflate(inflater, container, false)
         return binding.root
     }
+    /**
+    * Método que se llama cuando la vista asociada a este fragment se ha creado.
+    * Configura la action bar para que muestre "Administrador".
+    * Llama al método initRecyclerView() para inicializar el RecyclerView.
+    * @param view La vista raíz de la jerarquía de vistas del fragment.
+    * @param savedInstanceState Objeto Bundle que contiene los datos guardados en la última instancia del fragment o null si no hay datos guardados.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Configura la action bar con el título "Administrador"
         (activity as MainActivity?)!!.updateActionBarTitle("Administrador")
+        // Inicializa el RecyclerView
         initRecyclerView(view)
     }
+
+    /**
+    * Se llama cuando la actividad o el fragmento vuelve a estar en primer plano después de estar en segundo plano.
+    * Inicializa el RecyclerView en la vista del fragmento.
+    * @param view La vista raíz del fragmento.
+     */
     override fun onResume() {
         super.onResume()
         initRecyclerView(requireView())
     }
+    /**
+    * Descarga los datos de las armas de la base de datos y los añade a la lista de Administrador.
+    * Después de descargar y procesar los datos, configura el RecyclerView para mostrarlos.
+    * @throws Exception si se produce un error al descargar o procesar los datos.
+     */
     private suspend fun recycleAdmin() {
         lifecycleScope.launch {
+            // Obtener todos los documentos de la colección "Armas"
             var documents = bd.collection("Armas").get().await()
             for (document in documents) {
+                // Obtener el ID del documento y crear una referencia al archivo de imagen en el Storage
                 val documentId: String = document.getId()
                 val storageRef = FirebaseStorage.getInstance().reference.child("image/Little/$documentId"+"Little.jpeg")
-
                 // Descargar la imagen del Storage y convertirla a Bitmap
                 val bitmap = try {
                     val localFile = File.createTempFile("tempImage", "jpeg")
@@ -83,6 +104,7 @@ class AdministradorArmas : Fragment() {
                     null
                 }
 
+                // Crear un objeto dataAdmin con los datos descargados y procesados
                 val wallItem = dataAdmin(
                     nombre = document["Nombre"].toString(),
                     imageResourceId = bitmap,
@@ -90,6 +112,7 @@ class AdministradorArmas : Fragment() {
                     editar = R.drawable.edit,
                     borrar = R.drawable.trash
                 )
+                // Añadir el objeto dataAdmin a la lista de Armas de administradores
                 if (AdminList.admin.isEmpty()) {
                     AdminList.admin.add(wallItem)
                 } else {
@@ -105,24 +128,36 @@ class AdministradorArmas : Fragment() {
                     }
                 }
             }
+            // Configurar el RecyclerView para mostrar los datos descargados y procesados
             binding.recyclerAdmin.layoutManager = LinearLayoutManager(context)
             binding.recyclerAdmin.adapter = adminAdapter(AdminList.admin, ArmasList.armas, FavList.favoritos)
 
         }
     }
 
+    /**
+
+    * Inicializa el RecyclerView para mostrar la lista de armas de los administradores.
+    * Si la lista está vacía, se inicia una tarea asíncrona para obtener los datos de Firebase Firestore.
+    * Si la lista ya tiene datos, se configura el LinearLayoutManager y se muestra la lista.
+    * @param view La vista del fragmento donde se encuentra el RecyclerView.
+     */
     private fun initRecyclerView(view: View) {
         if (AdminList.admin.isEmpty()) {
+            // Si la lista de armas de los administradores está vacía, se obtienen los datos de la base de datos en un hilo secundario
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
                     recycleAdmin()
+                    // Una vez obtenidos los datos, se actualiza la interfaz de usuario para mostrar la lista de armas de los administradores.
                     binding.loadingAdmin.visibility = View.INVISIBLE
                     binding.recyclerAdmin.visibility = View.VISIBLE
                 }
             }
         }else {
+            // Si la lista de administradores no está vacía, se establece el LinearLayoutManager y el adapter correspondiente para mostrar la lista de administradores, armas y favoritos.
             binding.recyclerAdmin.layoutManager = LinearLayoutManager(context)
             binding.recyclerAdmin.adapter = adminAdapter(AdminList.admin, ArmasList.armas, FavList.favoritos)
+            // Luego, se actualiza la interfaz de usuario para mostrar la lista de armas de los administradores.
             binding.loadingAdmin.visibility = View.INVISIBLE
             binding.recyclerAdmin.visibility = View.VISIBLE
         }

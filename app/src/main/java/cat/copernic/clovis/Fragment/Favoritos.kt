@@ -63,15 +63,29 @@ class Favoritos : Fragment() {
         binding = FragmentFavoritosBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    /**
+    * Se llama cuando la vista asociada a este fragmento ha sido creada.
+    * @param view La vista inflada por el fragmento.
+    * @param savedInstanceState El estado anterior del fragmento.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Actualiza el título de la ActionBar en la MainActivity
         (activity as MainActivity?)!!.updateActionBarTitle("Favoritos")
+        // Inicializa el RecyclerView
         initRecyclerView(view)
     }
+
+    /**
+    * Descarga los documentos de la colección "Favoritos" del usuario actual de Firestore y los muestra en el RecyclerView de la pestaña de Favoritos.
+    * Cada elemento del RecyclerView consta de un nombre y una imagen asociada descargada del Storage de Firebase.
+     */
     private suspend fun recycleFav() {
         lifecycleScope.launch {
             auth = Firebase.auth
             var actual = auth.currentUser
+            // Obtiene los documentos de la colección "Favoritos" del usuario actual
             var documents = bd.collection("Users").document(actual!!.email.toString()).collection("Favoritos").get().await()
             for (document in documents) {
                 val documentId: String = document.getId()
@@ -86,7 +100,7 @@ class Favoritos : Fragment() {
                     // Manejar el error
                     null
                 }
-
+                // Crear objeto de datos del RecyclerView y agregarlo a la lista de favoritos si no existe ya en ella o si esta vacia
                 val wallItem = dataFav(
                     nombre = document["Nombre"].toString(),
                     imageResourceId = bitmap,
@@ -107,24 +121,38 @@ class Favoritos : Fragment() {
                     }
                 }
             }
+            // Mostrar los elementos en el RecyclerView de la pestaña de Favoritos
             binding.recyclerFavoritos.layoutManager = LinearLayoutManager(context)
             binding.recyclerFavoritos.adapter = favAdapter(FavList.favoritos)
 
 
         }
     }
+    /**
+
+    * Inicializa el RecyclerView de la lista de favoritos.
+    * Si la lista de favoritos está vacía, se lanza una corutina para cargar los datos de Firestore y actualizar la lista. Una vez cargados los datos, se actualiza la vista del RecyclerView.
+    * Si la lista de favoritos no está vacía, se establece el LayoutManager y el Adapter del RecyclerView con los datos existentes en la lista.
+    * @param view la vista que contiene el RecyclerView.
+     */
+
     private fun initRecyclerView(view: View) {
         if (FavList.favoritos.isEmpty()) {
+            // Si la lista de favoritos está vacía, lanzar una corutina para cargar los datos
             lifecycleScope.launch {
                 withContext(Dispatchers.IO){
+                    // Llamar a la función para cargar los datos desde Firestore y actualizar la lista de favoritos
                     recycleFav()
+                    // Una vez cargados los datos, actualizar la visibilidad de los elementos de la vista
                     binding.loadingFav.visibility = View.INVISIBLE
                     binding.recyclerFavoritos.visibility = View.VISIBLE
                 }
             }
         }else {
+            // Si la lista de favoritos no está vacía, establecer el LayoutManager y el Adapter del RecyclerView
             binding.recyclerFavoritos.layoutManager = LinearLayoutManager(context)
             binding.recyclerFavoritos.adapter = favAdapter(FavList.favoritos)
+            // Actualizar la visibilidad de los elementos de la vista
             binding.loadingFav.visibility = View.INVISIBLE
             binding.recyclerFavoritos.visibility = View.VISIBLE
         }

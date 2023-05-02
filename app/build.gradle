@@ -81,4 +81,6 @@ dependencies {
     // https://firebase.google.com/docs/android/setup#available-libraries
 
     implementation 'com.github.hotchemi:android-rate:1.0.1'
+
+    apply plugin: "org.jetbrains.dokka"
 }

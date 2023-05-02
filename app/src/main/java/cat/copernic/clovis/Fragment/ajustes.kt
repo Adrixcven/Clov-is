@@ -24,10 +24,17 @@ class ajustes : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentAjustesBinding
+    /**
 
+    * Método que se llama cuando se crea la actividad de Ajustes.
+
+    * @param savedInstanceState Guarda el estado de la actividad en caso de que se destruya y vuelva a crearse.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Actualiza el título de la Action Bar a "Ajustes".
         (activity as MainActivity?)!!.updateActionBarTitle("Ajustes")
+        // Si existen argumentos, los recupera.
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)

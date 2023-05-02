@@ -67,10 +67,19 @@ class addArma : Fragment(){
         binding = FragmentAddArmaBinding.inflate(inflater, container, false)
         return binding.root
     }
+    /**
+    * Método que se llama cuando la vista ha sido creada. Actualiza el título de la action bar
+    * y asigna listeners a las imágenes para seleccionar imágenes de la galería y al botón de guardar
+    * para guardar los datos de la nueva arma.
+    * @param view Vista actual
+    * @param savedInstanceState Datos previamente guardados del estado de la vista
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Actualiza el título de la ActionBar.
         (activity as MainActivity?)!!.updateActionBarTitle("Añadir arma")
 
+        // Establece los onClickListeners de las vistas de imagen, para abrir el selector de imágenes.
         binding.imgObject.setOnClickListener {
             intentimgweapon.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI))
         }
@@ -80,6 +89,7 @@ class addArma : Fragment(){
         binding.imgObjectLittle.setOnClickListener {
             intentimgLittle.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI))
         }
+        // Establece el onClickListener del botón Guardar, para llamar al método addweapon().
         binding.Guardar.setOnClickListener {
             addweapon()
 
@@ -89,58 +99,91 @@ class addArma : Fragment(){
     private var storageRefarmas  = storage.getReference().child("image/Armas").child("a.jpeg")
     private var storageRefPerks  = storage.getReference().child("image/Perks").child("a.jpeg")
     private var storageRefLittle  = storage.getReference().child("image/Little").child("a.jpeg")
+    /**
+
+     * Este método se encarga de registrar un resultado de actividad para abrir la galería y seleccionar
+     * una imagen para una arma, la cual será guardada en Firebase Storage y mostrada en el ImageView correspondiente.
+     * @return El resultado de la actividad que contiene la imagen seleccionada para el arma.
+     */
     private val intentimgweapon = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
+            // Obtiene la URI de la imagen seleccionada.
             val imageUri = result.data?.data
             if (imageUri != null) {
                 try {
-                if(binding.editarNombreArma.text.toString() != ""){
+                    // Comprueba que el campo de nombre de arma no está vacío.
+                    if(binding.editarNombreArma.text.toString() != ""){
+                        // Crea el nombre de archivo concatenando el nombre de la arma con "Image".
                         var texta = binding.editarNombreArma.text.toString() + "Image.jpeg"
+                        // Obtiene el stream de entrada de la imagen seleccionada.
                         val imageStream = requireContext().contentResolver.openInputStream(imageUri)
+                        // Convierte la imagen seleccionada a un objeto Bitmap.
                         val selectedImage = BitmapFactory.decodeStream(imageStream)
+                        // Comprime el objeto Bitmap a un arreglo de bytes.
                         val baos = ByteArrayOutputStream()
                         selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
                         val data = baos.toByteArray()
+                        // Guarda el arreglo de bytes como objeto pequeño en Firebase Storage.
                         storageRefarmas = storage.getReference().child("image/Armas").child(texta)
                         var uploadTask = storageRefarmas.putBytes(data)
                         uploadTask.addOnFailureListener {
                         }.addOnSuccessListener { taskSnapshot ->
                         }
+                        // Muestra la imagen seleccionada en el ImageView.
                         binding.imgObject.setImageBitmap(selectedImage)
                     }else{
+                        // Si el campo de nombre de arma está vacío, muestra un mensaje de error.
                         Toast.makeText(requireContext(), "No existe ningun nombre para identificar la imagen", Toast.LENGTH_LONG).show()
                     }
                 } catch (e: FileNotFoundException) {
+                    // Si el archivo no existe, muestra un mensaje de error.
                     e.printStackTrace()
                     Toast.makeText(requireContext(), "File not found.", Toast.LENGTH_LONG).show()
                 }
             } else {
+                // Si el archivo no existe, muestra un mensaje de error.
                 Toast.makeText(requireContext(), "Image not found.", Toast.LENGTH_LONG).show()
             }
         }
     }
+    /**
+
+    * Este método se encarga de registrar un resultado de actividad para abrir la galería y seleccionar
+    * una imagen para un perk, la cual será guardada en Firebase Storage y mostrada en el ImageView correspondiente.
+    * @return El resultado de la actividad que contiene la imagen seleccionada para el perk.
+     */
     private val intentimgperk = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
+            // Obtiene la URI de la imagen seleccionada.
             val imageUri = result.data?.data
             if (imageUri != null) {
                 try {
+                    // Comprueba que el campo de nombre de arma no está vacío.
                     if(binding.editarNombreArma.text.toString() != ""){
+                        // Crea el nombre de archivo concatenando el nombre de la arma con "perk".
                         var texta = binding.editarNombreArma.text.toString() + "perk.jpeg"
+                        // Obtiene el stream de entrada de la imagen seleccionada.
                         val imageStream = requireContext().contentResolver.openInputStream(imageUri)
+                        // Convierte la imagen seleccionada a un objeto Bitmap.
                         val selectedImage = BitmapFactory.decodeStream(imageStream)
+                        // Comprime el objeto Bitmap a un arreglo de bytes.
                         val baos = ByteArrayOutputStream()
                         selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
                         val data = baos.toByteArray()
+                        // Guarda el arreglo de bytes como objeto pequeño en Firebase Storage.
                         storageRefPerks = storage.getReference().child("image/Perks").child(texta)
                         var uploadTask = storageRefPerks.putBytes(data)
                         uploadTask.addOnFailureListener {
                         }.addOnSuccessListener { taskSnapshot ->
                         }
+                        // Muestra la imagen seleccionada en el ImageView.
                         binding.imgPerks.setImageBitmap(selectedImage)
                     }else{
+                        // Si el campo de nombre de arma está vacío, muestra un mensaje de error.
                         Toast.makeText(requireContext(), "No existe ningun nombre para identificar la imagen", Toast.LENGTH_LONG).show()
                     }
                 } catch (e: FileNotFoundException) {
+                    // Si el archivo no existe, muestra un mensaje de error.
                     e.printStackTrace()
                     val context: Context = requireContext()
                     val builder = AlertDialog.Builder(context)
@@ -150,49 +193,75 @@ class addArma : Fragment(){
                     dialog.show()
                 }
             } else {
+                // Si el archivo no existe, muestra un mensaje de error.
                 Toast.makeText(requireContext(), "Image not found.", Toast.LENGTH_LONG).show()
             }
         }
     }
     var selectedImage= Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
+    /**
+
+    * Registra una actividad para recibir el resultado de la selección de imagen de la galería
+    * y guarda la imagen seleccionada como objeto pequeño de la arma.
+    * @param result El resultado de la actividad que devuelve la imagen seleccionada.
+     */
     private val intentimgLittle = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
+            // Obtiene la URI de la imagen seleccionada.
             val imageUri = result.data?.data
             if (imageUri != null) {
                 try {
+                    // Comprueba que el campo de nombre de arma no está vacío.
                     if (binding.editarNombreArma.text.toString() != ""){
+                        // Crea el nombre de archivo concatenando el nombre de la arma con "Little".
                         var texta = binding.editarNombreArma.text.toString() + "Little.jpeg"
+                        // Obtiene el stream de entrada de la imagen seleccionada.
                         val imageStream = requireContext().contentResolver.openInputStream(imageUri)
+                        // Convierte la imagen seleccionada a un objeto Bitmap.
                         selectedImage = BitmapFactory.decodeStream(imageStream)
+                        // Comprime el objeto Bitmap a un arreglo de bytes.
                         val baos = ByteArrayOutputStream()
                         selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
                         val data = baos.toByteArray()
+                        // Guarda el arreglo de bytes como objeto pequeño en Firebase Storage.
                         storageRefLittle = storage.getReference().child("image/Little").child(texta)
                         var uploadTask = storageRefLittle.putBytes(data)
                         uploadTask.addOnFailureListener {
                         }.addOnSuccessListener { taskSnapshot ->
                         }
+                        // Muestra la imagen seleccionada en el ImageView.
                         binding.imgObjectLittle.setImageBitmap(selectedImage)
                     }else{
+                        // Si el campo de nombre de arma está vacío, muestra un mensaje de error.
                         Toast.makeText(requireContext(), "No existe ningun nombre para identificar la imagen", Toast.LENGTH_LONG).show()
                     }
                 } catch (e: FileNotFoundException) {
-                    e.printStackTrace()
+                    // Si el archivo no existe, muestra un mensaje de error.
                     Toast.makeText(requireContext(), "File not found.", Toast.LENGTH_LONG).show()
                 }
             } else {
+                // Si el archivo no existe, muestra un mensaje de error.
                 Toast.makeText(requireContext(), "Image not found.", Toast.LENGTH_LONG).show()
             }
         }
     }
+
+    /**
+
+    * Función para agregar un arma a la base de datos.
+     */
     fun addweapon(){
+        // Obtenemos los datos del arma
         var arma = llegirDades()
+        // Obtenemos la referencia a la base de datos y la subcolección de armas
         val db = FirebaseFirestore.getInstance()
         val subcollectionRef = db.collection("Armas")
+        // Comprobamos si el arma ya existe en la base de datos
         subcollectionRef.document(arma.nombre).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val document = task.result
                 if (document.exists()) {
+                    // Si el arma ya existe, mostramos un mensaje de alerta
                     val context: Context = requireContext()
                     val builder = AlertDialog.Builder(context)
                     builder.setMessage("El arma ya existe")
@@ -200,9 +269,10 @@ class addArma : Fragment(){
                     val dialog = builder.create()
                     dialog.show()
                 }else{
+                    // Si el arma no existe, la añadimos a la base de datos
                     bd.collection("Armas").document(arma.nombre).set(
-                        //En lloc d'afegir un objecte, també podem passar els parells clau valor d'un document mitjançant un hashMpa. Si hem de passar tots els
-                        // atributs d'un objecte passarem com a paràmetre l'objecte no un hashMap amb els seus atributs.
+                        // En lugar de añadir un objeto, también podemos pasar los pares clave-valor de un documento mediante un hashMap. Si tenemos que pasar todos los
+                        // atributos de un objeto, pasaremos como parámetro el objeto y no un hashMap con sus atributos.
                         hashMapOf(
                             "Nombre" to arma.nombre,
                             "Descripcion" to arma.descripcion,
@@ -219,6 +289,7 @@ class addArma : Fragment(){
                             "Retroceso" to arma.recoil,
                             "Ubicación" to arma.donde
                         )).addOnSuccessListener {
+                        // Si se ha añadido el arma con éxito, actualizamos la lista de armas y navegamos a la pantalla de selección de armas
                         val wallItem = dataArma(
                             nombre = arma.nombre,
                             imageResourceId = selectedImage,
@@ -240,7 +311,8 @@ class addArma : Fragment(){
                         Utilities.createNotification(requireContext(), channelID, notificationID)
                         view?.findNavController()?.navigate(R.id.action_addArma_to_seleccionarArma)
                     }
-                        .addOnFailureListener{ //No s'ha afegit el departament...
+                        .addOnFailureListener{  // No se ha añadido el arma...
+                            // Mostramos un mensaje de alerta indicando que no se ha podido crear el arma
                         val context: Context = requireContext()
                         val builder = AlertDialog.Builder(context)
                         builder.setMessage("No se ha podido crear el arma")
@@ -253,8 +325,15 @@ class addArma : Fragment(){
         }
 
     }
+
+    /**
+
+    * Método encargado de obtener las datos introducidos por el usuario en la vista de editar arma
+
+    * @return Objeto de la clase Arma con los datos introducidos por el usuario
+     */
     fun llegirDades(): Arma {
-        //Guardem les dades introduïdes per l'usuari
+        // Guardamos las datos introducidos por el usuario
         var nombre = binding.editarNombreArma.text.toString()
         var descripcion = binding.editarDescripcionArma.text.toString()
         var cargador = binding.editarAmmoArma.text.toString().toInt()
@@ -270,8 +349,7 @@ class addArma : Fragment(){
         var recoil = binding.editarRetrocesoArma.text.toString().toInt()
         var donde = binding.editarFindArma.text.toString()
 
-        //Afegim els treballadors introduïts per l'usuari a l'atribut treballadors
-
+        // Creamos y devolvemos el objeto de la clase Arma con los datos introducidos por el usuario
         return Arma(nombre, descripcion, null, cargador, disparos, impacto, rango, estabilidad, recarga, aim, magazine, zoom, aire, recoil,null, donde)
     }
 

@@ -61,9 +61,20 @@ class verUsuario : Fragment() {
         binding = FragmentVerUsuarioBinding.inflate(inflater, container, false)
         return binding.root
     }
+    /**
+     * Este método se llama después de que la vista asociada a este fragmento
+     * haya sido creada. Aquí se deben realizar todas las operaciones necesarias
+     * para inicializar la vista y asociarla con los datos del modelo.
+     *
+     * @param view La vista que se ha creado para este fragmento.
+     * @param savedInstanceState Los datos guardados del estado de la instancia del fragmento.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Llamada al método de la clase base.
         super.onViewCreated(view, savedInstanceState)
+        // Actualizar el título de la barra de acción en función del fragmento actual.
         (activity as MainActivity?)!!.updateActionBarTitle("Usuario")
+        // Iniciar un Intent para cargar datos y actualizar la interfaz de usuario.
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 ponerdatos()
@@ -71,21 +82,31 @@ class verUsuario : Fragment() {
             }
         }
 
-
+        // Configurar el botón de editar usuario para navegar a la pantalla de edición de usuario.
         binding.btnEditar.setOnClickListener{
             val id = binding.cabUserName.text.toString()
             val directions = verUsuarioDirections.actionVerUsuarioToEditarUsuario(id)
             view.findNavController().navigate(directions)
         }
     }
+    /**
+     * Este método se utiliza para cargar los datos de usuario desde la base de datos y actualizar
+     * la vista de usuario con estos datos.
+     */
     private suspend fun ponerdatos() {
+        // Iniciar una tarea asincrónica para cargar datos de usuario desde la base de datos.
         lifecycleScope.launch {
+            // Obtener la instancia de autenticación de Firebase.
             auth = Firebase.auth
+            // Obtener el usuario actualmente autenticado.
             var actual = auth.currentUser
+            // Obtener los datos del usuario desde la base de datos.
             bd.collection("Users").document(actual!!.email.toString()).get().addOnSuccessListener {
+                // Actualizar los campos de la vista de usuario con los datos del usuario obtenidos de la base de datos.
                 binding.cabUserName.text = it.get("id").toString()
                 binding.cabUserId.text = it.get("name").toString()
                 binding.textoDeDescripcion.text = it.get("descripcion").toString()
+                // Cargar la imagen de la clase del usuario desde Firebase Storage y actualizar la vista.
                 lifecycleScope.launch {
                     if (it.get("clase").toString() == "Hechicero") {
                         val storageRef =
@@ -113,27 +134,40 @@ class verUsuario : Fragment() {
                         val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
                         binding.imgClase.setImageBitmap(bitmap)
                         binding.textoDeClase.text = it.get("clase").toString()
-                    }else{
+                    } else{
                         binding.textoDeClase.text = "Sin clase"
-
                     }
                 }
             }
         }
     }
+    /**
+
+    * Carga la imagen del usuario actual desde Firebase Storage y la muestra en la vista correspondiente.
+    * Utiliza una tarea asíncrona para evitar bloquear el hilo principal.
+     */
     private suspend fun ponerimagenes(){
         lifecycleScope.launch {
+            // Obtiene la instancia de autenticación de Firebase
             auth = Firebase.auth
+            // Obtiene el usuario actualmente autenticado
             var actual = auth.currentUser
+            // Obtiene el email del usuario actual
             var email = actual!!.email.toString()
+            // Crea una referencia al archivo de imagen del usuario en Firebase Storage
             val storageRef =FirebaseStorage.getInstance().reference.child("image/usuarios/$email.jpeg")
+            // Obtiene los metadatos del archivo de imagen
             storageRef.metadata.addOnSuccessListener {
+                // Crea un archivo temporal para almacenar la imagen descargada
                 var localfile = File.createTempFile("tempImage", "jpeg")
+                // Descarga el archivo de imagen y lo guarda en el archivo temporal
                 storageRef.getFile(localfile).addOnSuccessListener {
+                    // Convierte el archivo temporal en un bitmap
                     val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    // Muestra el bitmap en la vista correspondiente
                     binding.imgUsuario.setImageBitmap(bitmap)
                 }
-            }.await()
+            }.await()// Espera a que se completen todas las tareas anteriores
         }
     }
 

@@ -76,30 +76,42 @@ class editar_usuario : Fragment() {
         binding = FragmentEditarUsuarioBinding.inflate(inflater, container, false)
         return binding.root
     }
+    /**
+    * Función que se ejecuta al crear la vista del fragmento "Editar usuario".
+    * Se encarga de actualizar el título de la action bar, obtener el id del usuario a editar,
+    * inicializar variables y vistas, y configurar el spinner de selección de clase.
+    * @param view Vista del fragmento.
+    * @param savedInstanceState Estado del fragmento.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Actualizar el título de la action bar
         (activity as MainActivity?)!!.updateActionBarTitle("Editar usuario")
+        // Obtener el id del usuario a editar
         var nom = args.id
+        // Inicializar variables y vistas
         var selectedOption = ""
         var admina = MutableLiveData<Boolean>(false)
+        // Ejecutar las funciones para obtener los datos del usuario y la foto de perfil
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 ponerusuario(admina)
                 ponerfoto()
             }
         }
-
+        // Configurar el spinner de selección de clase
         classSpinner = binding.spinnerClases
         ArrayAdapter.createFromResource(
             requireContext(),
             cat.copernic.clovis.R.array.class_options,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
+            // Especificar el layout a usar cuando aparece la lista de opciones
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
+            // Aplicar el adaptador al spinner
             classSpinner.adapter = adapter
         }
+
         binding.spinnerClases.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -116,18 +128,27 @@ class editar_usuario : Fragment() {
             }
         })
 
-
+        // Configurar el botón de la foto de perfil para abrir la cámara
         binding.fotoperfil.setOnClickListener{
             intentfotoperfil.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
+        // Configurar el botón de guardar perfil para modificar los datos del usuario y navegar hacia la vista de usuario
         binding.guardarPerfil.setOnClickListener {
             modificarusuario(selectedOption, admina)
 
             view.findNavController().navigate(cat.copernic.clovis.R.id.action_editar_usuario_to_verUsuario)
         }
     }
+
     private var storage = FirebaseStorage.getInstance()
     private var storageRef = storage.getReference().child("image/usuarios").child(".jpeg")
+    /**
+    * Esta función registra el resultado de la actividad de tomar una foto para el perfil del usuario.
+    * Si el resultado de la actividad es OK, se obtiene el usuario autenticado y su correo electrónico,
+    * se crea una referencia al almacenamiento de Firebase para guardar la imagen y se comprime la imagen
+    * en formato JPEG. Luego se sube la imagen al almacenamiento y se establece como imagen de perfil del usuario.
+    * @param result el resultado de la actividad de tomar una foto.
+     */
     private val intentfotoperfil = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             auth = Firebase.auth
@@ -146,11 +167,18 @@ class editar_usuario : Fragment() {
             binding.fotoperfil.setImageBitmap(imageBitmap)
         }
     }
+    /**
+     * Función que se encarga de obtener los datos del usuario actual y ponerlos en la vista correspondiente.
+     * También actualiza el valor de la variable admina con el valor de "admin" en la base de datos.
+     *
+     * @param admina MutableLiveData<Boolean> variable mutable que indica si el usuario actual es administrador o no.
+     */
     private suspend fun ponerusuario(admina: MutableLiveData<Boolean>){
         lifecycleScope.launch {
             auth = Firebase.auth
             var actual = auth.currentUser
             bd.collection("Users").document(actual!!.email.toString()).get().addOnSuccessListener {
+                // Pone los valores correspondientes en la vista
                 binding.nom.setText(it.get("name").toString())
                 binding.id.setText(it.get("id").toString())
                 binding.correoElectronico.setText(it.get("email").toString())
@@ -164,28 +192,44 @@ class editar_usuario : Fragment() {
                     binding.spinnerClases.setSelection(0)
                 }
                 binding.informacion.setText(it.get("descripcion").toString())
+                // Actualiza el valor de admina con el valor de "admin" en la base de datos
                 admina.value = it.get("admin") as Boolean
             }.await()
         }
     }
+    /**
+     * Descarga la imagen de perfil del usuario actual desde Firebase Storage y la coloca en la ImageView correspondiente.
+     * Utiliza la coroutine [lifecycleScope.launch] para realizar la tarea en un hilo separado.
+     */
     private suspend fun ponerfoto(){
         lifecycleScope.launch {
+            // Obtener el usuario actualmente autenticado
             auth = Firebase.auth
             var actual = auth.currentUser
             val email = actual!!.email.toString()
+            // Crear una referencia al archivo de imagen en Firebase Storage
             val ref = FirebaseStorage.getInstance().reference.child("image/usuarios/$email.jpeg")
+            // Obtener los metadatos del archivo de imagen
             ref.getMetadata().addOnSuccessListener {
+                // Si se obtienen los metadatos correctamente, descargar la imagen del Storage y convertirla a Bitmap
                 val storageRef =
                     FirebaseStorage.getInstance().reference.child("image/usuarios/$email.jpeg")
 
                 var localfile = File.createTempFile("tempImage", "jpeg")
                 storageRef.getFile(localfile).addOnSuccessListener {
                     val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+                    // Colocar el Bitmap en la ImageView correspondiente
                     binding.fotoperfil.setImageBitmap(bitmap)
                 }
-            }.await()
+            }.await() // Esperar a que se completen las operaciones de descarga de imagen y obtención de metadatos
         }
     }
+
+    /**
+    * Función encargada de modificar los datos de un usuario en la base de datos.
+    * @param selectedoOption String que indica el tipo de modificación a realizar.
+    * @param admina MutableLiveData que indica si el usuario es administrador o no.
+     */
     fun modificarusuario(selectedoOption:String, admina: MutableLiveData<Boolean>){
         auth = Firebase.auth
         var actual = auth.currentUser
@@ -200,8 +244,14 @@ class editar_usuario : Fragment() {
             )
         )
     }
+    /**
+     * Función encargada de leer los datos introducidos por el usuario en la vista y crear un objeto Usuario con ellos.
+     * @param selectedoOption opción seleccionada por el usuario en la vista.
+     * @param admina LiveData que indica si el usuario es administrador o no.
+     * @return objeto Usuario con los datos introducidos por el usuario.
+     */
     fun llegirDades(selectedoOption:String, admina: MutableLiveData<Boolean>): Usuario {
-        //Guardem les dades introduïdes per l'usuari
+        //Guardamos los datos introducidos por el usuario
         var nom = binding.nom.text.toString()
         var id = binding.id.text.toString()
         var Correo = binding.correoElectronico.text.toString()
@@ -210,7 +260,7 @@ class editar_usuario : Fragment() {
         var admin = admina.value
 
 
-        //Afegim els treballadors introduïts per l'usuari a l'atribut treballadors
+        // Creamos un objeto Usuario con los datos introducidos por el usuario y lo devolvemos
 
         return Usuario(nom, id, Correo, info, admin!!, clase, null)
     }
