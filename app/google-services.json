@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "541220693459",
+    "project_id": "clov-is-7",
+    "storage_bucket": "clov-is-7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541220693459:android:b4a4857bcdb39ef01abb26",
+        "android_client_info": {
+          "package_name": "cat.copernic.clovis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541220693459-m3s295esmok190c2ublrgt9plgm6a31r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkORJKSx38-MtLhQSImmWz0Zids53_Wpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541220693459-m3s295esmok190c2ublrgt9plgm6a31r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

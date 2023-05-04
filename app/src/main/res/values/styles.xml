@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TextInputLayout-->
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="android:layout_width">@dimen/TxtInput_width</item>
+        <item name="android:layout_height">@dimen/TxtInput_height</item>
+        <item name="background">@color/grey</item>
+        <item name="android:textColorHint">@color/lightggdark</item>
+    </style>
+    <style name="TextInputdoble" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/darkgrey</item>
+        <item name="android:layout_width">@dimen/TxtInput_width_doble</item>
+        <item name="android:layout_height">@dimen/TxtInput_height_doble</item>
+        <item name="background">@color/grey</item>
+        <item name="boxStrokeWidth">3dp</item>
+    </style>
+    <!--Boton-->
+    <style name="boton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/verdelogo</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">@dimen/boton_width</item>
+        <item name="android:layout_height">@dimen/boton_height</item>
+    </style>
+    <style name="botondoble" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/verdelogo</item>
+        <item name="android:radius">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">@dimen/boton_width_doble</item>
+        <item name="android:layout_height">@dimen/boton_height_doble</item>
+    </style>
+    <!--Titulos, TextViews-->
+    <style name="Titulo" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title</item>
+    </style>
+    <style name="TextView25dp" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title2</item>
+    </style>
+    <style name="TextView20dp" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title3</item>
+    </style>
+    <style name="TextView18dp" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title4</item>
+    </style>
+    <style name="TextView16dp" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title5</item>
+    </style>
+    <style name="TextView_por_defecto" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title6</item>
+    </style>
+    <style name="Titulodoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title_doble</item>
+    </style>
+    <style name="TextView25dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title2_doble</item>
+    </style>
+    <style name="TextView20dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title3_doble</item>
+    </style>
+    <style name="TextView18dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title4_doble</item>
+    </style>
+    <style name="TextView16dpdoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title5_doble</item>
+    </style>
+    <style name="TextView_por_defectodoble" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/size_title6_doble</item>
+    </style>
+    <style name="TextView_colorOnly" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!--Spinner-->
+    <style name="Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:layout_width">@dimen/Spinner_width</item>
+        <item name="android:layout_height">@dimen/Spinner_height</item>
+        <item name="android:padding">10sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style>
+    <!--Switch-->
+    <style name="Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:width">@dimen/Switch_width</item>
+        <item name="android:height">@dimen/Switch_height</item>
+        <item name="android:layout_marginTop">@dimen/marginTopSwitch</item>
+        <item name="android:minHeight">@dimen/minHeightSwitch</item>
+        <item name="android:backgroundTint">@color/darkgrey</item>
+    </style>
+    <!--CheckBox-->
+    <style name="CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:width">@dimen/Check_width</item>
+        <item name="android:minHeight">@dimen/Check_height</item>
+        <item name="android:textSize">@dimen/Check_size</item>
+        <item name="android:buttonTint">@color/darkgrey</item>
+    </style>
+
+    <style name="MenuStyle">
+        <item name="android:textSize">40dp</item>
+        <item name="android:padding">30dp</item>
+    </style>
+    <style name="Toolbar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/size_title4</item>
+    </style>
+</resources>

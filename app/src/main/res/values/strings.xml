@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">Clov-is</string>
+    <string name="bienvenido_usuario">Bienvenido Usuario</string>
+    <string name="email">Email</string>
+    <string name="correo_electronico">Correo electronico</string>
+    <string name="no_tienes_una_cuenta">¿No tienes una cuenta?</string>
+    <string name="unete"><b>Unete a nosotros</b></string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="contra">Contraseña</string>
+    <string name="nombre">Nombre</string>
+    <string name="registrate">Registrate!</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="ya_tienes_cuenta_inicia_sesion">Ya tienes cuenta? <b>Inicia sesion</b></string>
+    <string name="recuperar_contra">Recuperar contraseña</string>
+    <string name="proporcionanos_tu_correo_electronico_y_te_mandaremos_las_instrucciones_para_recuperar_la_contrase_a">Proporcionanos tu correo electronico y te mandaremos las instrucciones para recuperar la contraseña</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="enviar">Enviar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scroll">Scroll</string>
+    <string name="description">Descripción</string>
+    <string name="ejemplo">Ejemplo</string>
+    <string name="num_example">1000</string>
+    <string name="perks">Perks</string>
+    <string name="lugar_de_obtenci_n">Lugar de obtención</string>
+    <string name="cuenta">Cuenta</string>
+    <string name="foto_de_perfil">Foto de perfil</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="guardar_perfil">Guardar Perfil</string>
+    <string name="id">ID</string>
+    <string name="descripci_n_personal">Descripción personal</string>
+    <string name="que_clase_eres">Que clase eres?</string>
+    <string name="clases_de_personaje">Clases de personaje</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
+    <string name="guardar">Guardar</string>
+    <string name="recoil">Recoil</string>
+    <string name="disparos_por_minuto">Disparos por minuto</string>
+    <string name="cargador">Cargador</string>
+    <string name="impacto">Impacto</string>
+    <string name="rango">Rango</string>
+    <string name="estabilidad">Estabilidad</string>
+    <string name="velocidad_de_recarga">Velocidad de recarga</string>
+    <string name="asistencia_de_apuntado">Asistencia de apuntado</string>
+    <string name="tama_o_de_inventario">Tamaño de inventario</string>
+    <string name="zoom">Zoom</string>
+    <string name="ayuda_en_aire">Ayuda en aire</string>
+    <string name="imagen_arma">Imagen del arma</string>
+    <string name="imagen_perk">imagen_perk</string>
+    <string name="imagen_atras">imagen_atras</string>
+    <string name="ejemplo_arma">CHRYSURA MELO</string>
+    <string name="selecciona_un_arma">Selecciona un Arma</string>
+    <string name="clase_de_personaje">Clase de personaje</string>
+    <string name="editar">Editar</string>
+    <string name="usuario">Usuario</string>
+    <string name="perfil">Perfil</string>
+    <string name="imagen_clase">imagen_clase</string>
+    <string name="recibir_notificaciones">Recibir notificaciones</string>
+    <string name="idioma">Idioma</string>
+    <string name="modo_noche">Modo noche</string>
+    <string name="idiomas">idiomas</string>
+    <string name="logo">logo</string>
+    <string name="has_olvidado_la_contrase_a">¿Has olvidado la contraseña?</string>
+    <string name="acepto_los_terminos_de_usuario_y_privacidad">Acepto los terminos de usuario y privacidad</string>
+    <string name="repite_contrase_a">Repite Contraseña</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="delete">delete</string>
+    <string name="clase">Clase</string>
+    <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="inicio">Inicio</string>
+    <string name="a_adir_arma">Añadir Arma</string>
+    <string name="administrar_armas">Administrar Armas</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="edit_user">Editar Usuario</string>
+    <string name="edit_arma">Editar Arma</string>
+    <string name="info_arma">Información Arma</string>
+    <string name="select_arma">Seleccionar Arma</string>
+    <string name="imagen_favoritos">Imagen Favoritos</string>
+    <string name="imagen_peque_a_del_arma">Imagen pequeña del arma</string>
+    <string name="estrella_favoritos">Estrella Favoritos</string>
+    <string name="version_de_la_aplicacion">Version de la aplicación</string>
+    <string name="id_version">1.0</string>
+    <string name="correo_de_soporte">Correo de soporte: Clovis@gmail.com</string>
+    <string name="politicas_de_uso">Políticas de uso</string>
+    <string name="policy">Para utilizar esta aplicación, se requiere el acceso a los siguientes permisos:\n\n"
+    "- Cámara: Necesaria para tomar fotos .\n\n"
+    "- Galería: Necesaria para acceder a las imágenes guardadas en el dispositivo.\n\n"
+    "- Conexión a internet: Necesaria para acceder a los contenidos y/o funcionalidades en línea.\n\n"
+    "Al utilizar esta aplicación, acepta las políticas de uso.</string>
+    <string name="armas_favoritas">Armas Favoritas</string>
+    <string name="boton_editar">boton editar</string>
+    <string name="boton_borrar">boton borrar</string>
+    <string name="puntos_suspensivos">...</string>
+    <string name="imagearma">imagen arma</string>
+
+    <string-array name="class_options">
+        <item>Selecciona Clase</item>
+        <item>Cazador</item>
+        <item>Titan</item>
+        <item>Hechicero</item>
+    </string-array>
+    <string-array name="idiomas_options">
+        <item>Castellano</item>
+        <item>Catalan</item>
+        <item>Ingles</item>
+    </string-array>
+</resources>
