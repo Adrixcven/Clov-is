@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.armasAdapter
 import cat.copernic.clovis.data.dataArma
@@ -68,7 +69,12 @@ class SeleccionarArma : Fragment() {
         // Inicializar el RecyclerView.
         initRecyclerView(view)
         // Actualizar el título de la ActionBar a "Seleccionar Arma".
-        (activity as MainActivity?)!!.updateActionBarTitle("Seleccionar Arma")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Seleccionar Arma")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Seleccionar Arma")
+        }
+
         // Configurar y mostrar el diálogo de valoración de la aplicación si se cumplen las condiciones.
         AppRate.with(requireActivity()).setInstallDays(0).setLaunchTimes(2).setRemindInterval(1).monitor()
         AppRate.showRateDialogIfMeetsConditions(requireActivity())

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.armasAdapter
 import cat.copernic.clovis.adapter.favAdapter
@@ -72,7 +73,11 @@ class Favoritos : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Actualiza el título de la ActionBar en la MainActivity
-        (activity as MainActivity?)!!.updateActionBarTitle("Favoritos")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Favoritos")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Favoritos")
+        }
         // Inicializa el RecyclerView
         initRecyclerView(view)
     }

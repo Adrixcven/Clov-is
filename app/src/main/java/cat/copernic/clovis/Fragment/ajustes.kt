@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.databinding.FragmentAjustesBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,7 +34,11 @@ class ajustes : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Actualiza el título de la Action Bar a "Ajustes".
-        (activity as MainActivity?)!!.updateActionBarTitle("Ajustes")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Ajustes")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Ajustes")
+        }
         // Si existen argumentos, los recupera.
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)

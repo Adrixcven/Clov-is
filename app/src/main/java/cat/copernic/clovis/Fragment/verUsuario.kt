@@ -11,6 +11,7 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.R
 import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.databinding.FragmentSeleccionarArmaBinding
@@ -73,7 +74,11 @@ class verUsuario : Fragment() {
         // Llamada al método de la clase base.
         super.onViewCreated(view, savedInstanceState)
         // Actualizar el título de la barra de acción en función del fragmento actual.
-        (activity as MainActivity?)!!.updateActionBarTitle("Usuario")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Usuario")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Usuario")
+        }
         // Iniciar un Intent para cargar datos y actualizar la interfaz de usuario.
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {

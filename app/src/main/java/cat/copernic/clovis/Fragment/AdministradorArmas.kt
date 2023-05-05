@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.R
 import cat.copernic.clovis.adapter.adminAdapter
 import cat.copernic.clovis.data.dataAdmin
@@ -67,7 +68,11 @@ class AdministradorArmas : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Configura la action bar con el título "Administrador"
-        (activity as MainActivity?)!!.updateActionBarTitle("Administrador")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Administrador")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Administrador")
+        }
         // Inicializa el RecyclerView
         initRecyclerView(view)
     }

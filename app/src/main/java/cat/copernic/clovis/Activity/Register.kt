@@ -8,9 +8,11 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import cat.copernic.clovis.Models.Usuario
+import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -24,6 +26,9 @@ class Register : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
     private var bd = FirebaseFirestore.getInstance()
+    private var channelID = "ChannelID"
+    private var channelName = "ChannelName"
+    private val notificationID = 0
 
     /**
 
@@ -62,6 +67,8 @@ class Register : AppCompatActivity() {
             if(contrasena.equals(repContrasena)&&campoVacio(correo,contrasena,repContrasena)&&contrasena.length >= 6&&binding.checkTermCond.isChecked()){
                 // Si los campos son válidos, se llama a la función "registrar()" y se inicia la actividad "Login".
                 registrar(correo,contrasena)
+                Utilities.createNotificationChannel(channelName, channelID, this)
+                Utilities.createNotificationRegistro(this, channelID, notificationID)
                 startActivity(Intent(this, Login::class.java))
                 finish()
             }else if(correo.isBlank()&&contrasena.isNotEmpty()){

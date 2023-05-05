@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
 import cat.copernic.clovis.Utils.Utilities
@@ -77,7 +78,12 @@ class addArma : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Actualiza el título de la ActionBar.
-        (activity as MainActivity?)!!.updateActionBarTitle("Añadir arma")
+
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Añadir Arma")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Añadir Arma")
+        }
 
         // Establece los onClickListeners de las vistas de imagen, para abrir el selector de imágenes.
         binding.imgObject.setOnClickListener {

@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.Models.Usuario
 import cat.copernic.clovis.databinding.FragmentEditarUsuarioBinding
 import cat.copernic.clovis.datalist.AdminList.Companion.admin
@@ -86,7 +87,11 @@ class editar_usuario : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Actualizar el título de la action bar
-        (activity as MainActivity?)!!.updateActionBarTitle("Editar usuario")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Editar Usuario")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Editar Usuario")
+        }
         // Obtener el id del usuario a editar
         var nom = args.id
         // Inicializar variables y vistas

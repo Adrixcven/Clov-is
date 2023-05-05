@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.R
+import cat.copernic.clovis.Utils.Utilities
 import cat.copernic.clovis.databinding.FragmentInfoObjectsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -43,6 +45,9 @@ class Info_objects : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var bd = FirebaseFirestore.getInstance()
     var id = ""
+    private var channelID = "ChannelID"
+    private var channelName = "ChannelName"
+    private val notificationID = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +82,11 @@ class Info_objects : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Actualizar el título de la ActionBar en la actividad principal
-        (activity as MainActivity?)!!.updateActionBarTitle("Info Arma")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Info Arma")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Info Arma")
+        }
         // Obtener el id del arma seleccionada de los argumentos
         id = args.id
         // Obtener la instancia de autenticación de Firebase
@@ -111,6 +120,8 @@ class Info_objects : Fragment() {
                     if (document.exists()) {
                         favoritosdelete(id)
                     } else {
+                        Utilities.createNotificationChannel(channelName, channelID, requireContext())
+                        Utilities.createNotificationFav(requireContext(), channelID, notificationID)
                         favoritosadd(id)
                     }
                 }

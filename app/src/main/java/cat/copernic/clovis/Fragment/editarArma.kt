@@ -20,6 +20,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.clovis.Activity.MainActivity
+import cat.copernic.clovis.Activity.MainActivity_Users
 import cat.copernic.clovis.Models.Arma
 import cat.copernic.clovis.R
 import cat.copernic.clovis.data.dataAdmin
@@ -84,7 +85,11 @@ class editarArma : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Actualizar el título de la barra de acción
-        (activity as MainActivity?)!!.updateActionBarTitle("Editar Arma")
+        if(getActivity() is MainActivity){
+            (activity as MainActivity?)!!.updateActionBarTitle("Editar Arma")
+        }else if(activity is MainActivity_Users){
+            (activity as MainActivity_Users?)!!.updateActionBarTitle("Editar Arma")
+        }
         // Obtener el id del arma a editar
         id = args.id
         // Cargar los datos e imágenes correspondientes

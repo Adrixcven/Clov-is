@@ -60,6 +60,43 @@ class Utilities {
             val notificationManager: NotificationManagerCompat = NotificationManagerCompat.from(context)
             notificationManager.notify(notificationID, notification)
         }
+        //Crea la notificacion con el channelID y la notificationID de la clase donde lo llames
+        fun createNotificationFav(context: Context, channelID: String, notificationID:Int) {
+            val intent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            val notification = NotificationCompat.Builder(context, channelID).also {
+                it.setContentTitle("Favorito")
+                it.setContentText("Se ha añadido una nueva arma a favoritos")
+                it.setSmallIcon(R.drawable.logo_clovis)
+                it.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                it.setContentIntent(pendingIntent)
+                it.setAutoCancel(true)
+            }.build()
+            val notificationManager: NotificationManagerCompat = NotificationManagerCompat.from(context)
+            notificationManager.notify(notificationID, notification)
+        }
+        //Crea la notificacion con el channelID y la notificationID de la clase donde lo llames
+        fun createNotificationRegistro(context: Context, channelID: String, notificationID:Int) {
+            val intent = Intent(context, MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+            val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+            val notification = NotificationCompat.Builder(context, channelID).also {
+                it.setContentTitle("Bienvenido")
+                it.setContentText("Te has registrado a Clov-is.")
+                it.setSmallIcon(R.drawable.logo_clovis)
+                it.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                it.setContentIntent(pendingIntent)
+                it.setAutoCancel(true)
+            }.build()
+            val notificationManager: NotificationManagerCompat = NotificationManagerCompat.from(context)
+            notificationManager.notify(notificationID, notification)
+        }
+
 
 
     }
