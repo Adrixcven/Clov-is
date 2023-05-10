@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgrey"
+    tools:context=".Activity.Login"
+    android:padding="@dimen/default_margin">
+
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="@dimen/logo_width_small"
+        android:layout_height="@dimen/logo_height_small"
+        android:contentDescription="@string/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_clovis" />
+
+    <TextView
+        android:id="@+id/txt_bienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="99dp"
+        android:text="@string/bienvenido_usuario"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/email"
+        android:textSize="@dimen/size_title3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_bienvenido" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_email">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputCajaNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/correo_electronico"
+            tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/contra"
+        android:textSize="@dimen/size_title3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputNombre" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_password"
+        app:endIconMode="password_toggle"
+        app:endIconDrawable="@drawable/password_toogle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputCajaPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textColorHint="#546E7A"
+            android:inputType="textPassword"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_forgotPassword"
+        style="@style/TextView20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:height="40dp"
+        android:text="@string/has_olvidado_la_contrase_a"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPassword" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="150dp"
+        android:width="@dimen/boton_width"
+        android:height="@dimen/boton_height"
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_forgotPassword"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/txt_NoTienesCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/no_tienes_una_cuenta"
+        android:textAlignment="center"
+        android:textSize="@dimen/size_title4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <TextView
+        android:id="@+id/txt_unete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:height="40dp"
+        android:gravity="center|center_horizontal"
+        android:text="@string/unete"
+        android:textAlignment="center"
+        android:textSize="@dimen/size_title4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_NoTienesCuenta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

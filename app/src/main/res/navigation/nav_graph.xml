@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/seleccionarArma">
+    <fragment
+        android:id="@+id/addArma"
+        android:name="cat.copernic.clovis.Fragment.addArma"
+        android:label="Añadir Arma"
+        tools:layout="@layout/fragment_add_arma" >
+        <action
+            android:id="@+id/action_addArma_to_seleccionarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/seleccionarArma" />
+    </fragment>
+    <fragment
+        android:id="@+id/administradorArmas"
+        android:name="cat.copernic.clovis.Fragment.AdministradorArmas"
+        android:label="Administrador"
+        tools:layout="@layout/fragment_administrador_armas" >
+        <action
+            android:id="@+id/action_administradorArmas_to_editarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/editarArma" />
+        <action
+            android:id="@+id/action_administradorArmas_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/info_objects" />
+        <argument android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="document"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_administradorArmas_self"
+            app:destination="@id/administradorArmas" />
+    </fragment>
+    <fragment
+        android:id="@+id/ajustes"
+        android:name="cat.copernic.clovis.Fragment.ajustes"
+        android:label="@string/ajustes"
+        tools:layout="@layout/fragment_ajustes" />
+    <fragment
+        android:id="@+id/editar_usuario"
+        android:name="cat.copernic.clovis.Fragment.editar_usuario"
+        android:label="@string/edit_user"
+        tools:layout="@layout/fragment_editar_usuario" >
+        <action
+            android:id="@+id/action_editar_usuario_to_verUsuario"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/verUsuario" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarArma"
+        android:name="cat.copernic.clovis.Fragment.editarArma"
+        android:label="@string/edit_arma"
+        tools:layout="@layout/fragment_editar_weapon" >
+        <action
+            android:id="@+id/action_editarArma_to_administradorArmas"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/administradorArmas" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/info_objects"
+        android:name="cat.copernic.clovis.Fragment.Info_objects"
+        android:label="@string/info_arma"
+        tools:layout="@layout/fragment_info_objects" >
+        <action
+            android:id="@+id/action_info_objects_to_seleccionarArma"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/seleccionarArma" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/seleccionarArma"
+        android:name="cat.copernic.clovis.Fragment.SeleccionarArma"
+        android:label="@string/select_arma"
+        tools:layout="@layout/fragment_seleccionar_arma" >
+        <action
+            android:id="@+id/action_seleccionarArma_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/info_objects" />
+    </fragment>
+    <fragment
+        android:id="@+id/verUsuario"
+        android:name="cat.copernic.clovis.Fragment.verUsuario"
+        android:label="@string/usuario"
+        tools:layout="@layout/fragment_ver_usuario" >
+        <action
+            android:id="@+id/action_verUsuario_to_editar_usuario"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/editar_usuario" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritos"
+        android:name="cat.copernic.clovis.Fragment.Favoritos"
+        android:label="@string/favoritos"
+        tools:layout="@layout/fragment_favoritos">
+        <action
+            android:id="@+id/action_favoritos_to_info_objects"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit"
+            app:destination="@id/info_objects" />
+    </fragment>
+</navigation>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Titulos-->
+    <dimen name="size_title">34sp</dimen>
+    <dimen name="size_title2">25sp</dimen>
+    <dimen name="size_title3">20sp</dimen>
+    <dimen name="size_title4">18sp</dimen>
+    <dimen name="size_title5">16sp</dimen>
+    <dimen name="size_title6">14sp</dimen>
+    <!--Text Input Layout-->
+    <dimen name="TxtInput_width">350dp</dimen>
+    <dimen name="TxtInput_height">55dp</dimen>
+    <!--Boton-->
+    <dimen name="buttons_corners">12dp</dimen>
+    <dimen name="boton_width">150dp</dimen>
+    <dimen name="boton_width_cancEnvi">162dp</dimen>
+    <dimen name="boton_height">62dp</dimen>
+    <!--Margen-->
+    <dimen name="default_margin">25dp</dimen>
+    <dimen name="default_margin_for_description">50dp</dimen>
+    <!--Margin Top Texts-->
+    <dimen name="marginTop_texts">20dp</dimen>
+    <dimen name="marginTop_textsSmall">12dp</dimen>
+    <dimen name="MarginTopSmall">5dp</dimen>
+    <dimen name="MarginTopBig">40dp</dimen>
+    <!--Image Icon Services -->
+    <dimen name="size_img_service">85dp</dimen>
+    <!--Logo -->
+    <dimen name="logo_width_grande">216dp</dimen>
+    <dimen name="logo_height_grande">173dp</dimen>
+    <dimen name="logo_width_small">158dp</dimen>
+    <dimen name="logo_height_small">130dp</dimen>
+    <!--Spinner-->
+    <dimen name="Spinner_width">245dp</dimen>
+    <dimen name="Spinner_height">50dp</dimen>
+    <!--Switch-->
+    <dimen name="Switch_width">340dp</dimen>
+    <dimen name="Switch_height">50dp</dimen>
+    <dimen name="marginTopSwitch">9dp</dimen>
+    <dimen name="minHeightSwitch">48dp</dimen>
+    <!--CheckBox-->
+    <dimen name="Check_size">200dp</dimen>
+    <dimen name="Check_width">350dp</dimen>
+    <dimen name="Check_height">50dp</dimen>
+    <!--Iconos-->
+    <dimen name="Icon_width">63dp</dimen>
+    <dimen name="Icon_heigth">55dp</dimen>
+    <dimen name="small_eye">32dp</dimen>
+
+    <!--arma dimension-->
+    <dimen name="item_arma_height">249dp</dimen>
+    <dimen name="item_arma_width">250dp</dimen>
+    <dimen name="item_admin_width">249dp</dimen>
+    <dimen name="item_admin_height">295dp</dimen>
+    <!--star-->
+    <dimen name="star">40dp</dimen>
+    <!--cargando-->
+    <dimen name="loadingwidth">170dp</dimen>
+    <dimen name="loadingheight">175dp</dimen>
+
+    <!--doble sizes-->
+    <dimen name="size_title_doble">68sp</dimen>
+    <dimen name="size_title2_doble">50sp</dimen>
+    <dimen name="size_title3_doble">40sp</dimen>
+    <dimen name="size_title4_doble">36sp</dimen>
+    <dimen name="size_title5_doble">32sp</dimen>
+    <dimen name="size_title6_doble">28sp</dimen>
+    <dimen name="TxtInput_width_doble">700dp</dimen>
+    <dimen name="TxtInput_height_doble">110dp</dimen>
+    <dimen name="buttons_corners_doble">24dp</dimen>
+    <dimen name="boton_width_doble">300dp</dimen>
+    <dimen name="boton_width_cancEnvi_doble">224dp</dimen>
+    <dimen name="boton_height_doble">100dp</dimen>
+    <dimen name="default_margin_doble">50dp</dimen>
+    <dimen name="default_margin_for_description_doble">100dp</dimen>
+    <dimen name="marginTop_texts_doble">40dp</dimen>
+    <dimen name="marginTop_textsSmall_doble">24dp</dimen>
+    <dimen name="MarginTopSmall_doble">10dp</dimen>
+    <dimen name="MarginTopBig_doble">80dp</dimen>
+    <dimen name="size_img_service_doble">170dp</dimen>
+    <dimen name="logo_width_grande_doble">432dp</dimen>
+    <dimen name="logo_height_grande_doble">346dp</dimen>
+    <dimen name="logo_width_small_doble">316dp</dimen>
+    <dimen name="logo_height_small_doble">260dp</dimen>
+    <dimen name="Spinner_width_doble">490dp</dimen>
+    <dimen name="Spinner_height_doble">100dp</dimen>
+    <dimen name="Switch_width_doble">680dp</dimen>
+    <dimen name="Switch_height_doble">100dp</dimen>
+    <dimen name="marginTopSwitch_doble">18dp</dimen>
+    <dimen name="minHeightSwitch_doble">96dp</dimen>
+    <dimen name="Check_size_doble">400dp</dimen>
+    <dimen name="Check_width_doble">700dp</dimen>
+    <dimen name="Check_height_doble">100dp</dimen>
+    <dimen name="Icon_width_doble">126dp</dimen>
+    <dimen name="Icon_heigth_doble">110dp</dimen>
+    <dimen name="small_eye_doble">64dp</dimen>
+    <dimen name="item_arma_height_doble">402dp</dimen>
+    <dimen name="item_arma_width_doble">350dp</dimen>
+    <dimen name="item_admin_width_doble">498dp</dimen>
+    <dimen name="item_admin_height_doble">590dp</dimen>
+    <dimen name="star_doble">80dp</dimen>
+    <dimen name="loadingwidth_doble">340dp</dimen>
+    <dimen name="loadingheight_doble">350dp</dimen>
+</resources>
