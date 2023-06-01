@@ -22,6 +22,6 @@ https://play.google.com/store/apps/details?id=cat.copernic.clovis
 
 ### Imagenes de la App
 
-![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/clov-is_principal%20(1).jpeg)]
-![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/info_arma%20(1).jpeg)]
-![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/usuario%20(1).jpeg)]
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/clov-is_principal%20(1).jpeg)
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/info_arma%20(1).jpeg)
+![image](https://github.com/Adrixcven/Adrixcven/blob/main/Imagenes/Clov-is/usuario%20(1).jpeg)
